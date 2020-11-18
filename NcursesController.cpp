@@ -21,6 +21,48 @@ NcursesController::~NcursesController()
 
 }
 
+void NcursesController::discover(int herox, int heroy, int discovered[128][128])
+{
+  herox++;
+  heroy++;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  herox++;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  heroy++;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  herox--;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  herox--;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  heroy--;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  heroy--;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  herox++;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+  herox++;
+  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    discovered[heroy][herox] = 1;
+  }
+}
+
+
 
 void NcursesController::initializeColor() //set up the color pairs for the program (foreground and background)
 {
@@ -35,7 +77,7 @@ void NcursesController::initializeColor() //set up the color pairs for the progr
 
 
 //displays the current map frame, with the hero centered
-void NcursesController::displayFrame(char map[128][128], int herox, int heroy)
+void NcursesController::displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128])
 {
   erase(); //clear screen to prevent out of bounds
   int viewport_width = COLS - 30; //width of displayport, minus space to display options/info
@@ -52,7 +94,7 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy)
   int x_adder = 3;
   int xcheck = viewport_width;
   if(xcheck % 2 == 0)
-    x_adder = 1;
+    x_adder--;
 
   //vertical line to separate viewport from menu
   mvvline(0, viewport_width+1, '#', viewport_height);
@@ -70,24 +112,32 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy)
       }
       switch(map[y][x]) {
         case 'm':
-          attron(COLOR_PAIR(MEADOW_PAIR));
-          mvaddch(printy,printx,' ');
-          attroff(COLOR_PAIR(MEADOW_PAIR));
+          if(discovered[y][x]){
+            attron(COLOR_PAIR(MEADOW_PAIR));
+            mvaddch(printy,printx,' ');
+            attroff(COLOR_PAIR(MEADOW_PAIR));
+          }
           break;
         case 'w':
-          attron(COLOR_PAIR(WALL_PAIR));
-          mvaddch(printy,printx,' ');
-          attroff(COLOR_PAIR(WALL_PAIR));
+          if(discovered[y][x]){
+            attron(COLOR_PAIR(WALL_PAIR));
+            mvaddch(printy,printx,' ');
+            attroff(COLOR_PAIR(WALL_PAIR));
+          }
           break;
         case 's':
-          attron(COLOR_PAIR(SWAMP_PAIR));
-          mvaddch(printy,printx,' ');
-          attroff(COLOR_PAIR(SWAMP_PAIR));
+          if(discovered[y][x]){
+            attron(COLOR_PAIR(SWAMP_PAIR));
+            mvaddch(printy,printx,' ');
+            attroff(COLOR_PAIR(SWAMP_PAIR));
+          }
           break;
         case 'b':
-          attron(COLOR_PAIR(WATER_PAIR));
-          mvaddch(printy,printx,' ');
-          attroff(COLOR_PAIR(WATER_PAIR));
+          if(discovered[y][x]){
+            attron(COLOR_PAIR(WATER_PAIR));
+            mvaddch(printy,printx,' ');
+            attroff(COLOR_PAIR(WATER_PAIR));
+          }
           break;
       }
       printx++;
