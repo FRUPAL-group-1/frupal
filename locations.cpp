@@ -24,5 +24,5 @@ bool Locations::set(string key, any grovnick){
 }
 
 void Locations::destroy(string key){
-  auto res = grovnicks.erase({key});
+  grovnicks.erase({key});
 }
