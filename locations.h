@@ -1,4 +1,4 @@
 // C. Gunnar Rosenberg
-// Locations Class
+// Locations
 
 
