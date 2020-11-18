@@ -4,6 +4,7 @@
 
 #include "NcursesController.h"
 
+//default constructor
 NcursesController::NcursesController()
 {
   MEADOW_PAIR = 1;
@@ -14,6 +15,7 @@ NcursesController::NcursesController()
   DIAMOND_PAIR = 6;
 }
 
+//destructor
 NcursesController::~NcursesController()
 {
 
@@ -36,11 +38,12 @@ void NcursesController::initializeColor() //set up the color pairs for the progr
 void NcursesController::displayFrame(char map[128][128], int herox, int heroy)
 {
   erase(); //clear screen to prevent out of bounds
-  int viewport_width = COLS - 30;
-  int viewport_height = LINES;
-  int hero_xspot = floor(viewport_width/2);
-  int hero_yspot = floor(viewport_height/2);
+  int viewport_width = COLS - 30; //width of displayport, minus space to display options/info
+  int viewport_height = LINES; //height of the window
+  int hero_xspot = floor(viewport_width/2); //center of displayport x axis
+  int hero_yspot = floor(viewport_height/2); //center of displayport y axis
 
+  //handles edge screen buffer for even and odd window sizes
   int y_adder = 2;
   int ycheck = viewport_height;
   if(ycheck % 2 == 0)
@@ -51,8 +54,10 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy)
   if(xcheck % 2 == 0)
     x_adder = 1;
 
+  //vertical line to separate viewport from menu
   mvvline(0, viewport_width+1, '#', viewport_height);
 
+  //loop through map array and display info on screen
   for(int y = (heroy - (hero_yspot-1)), printy = 0; y < (heroy + hero_yspot + y_adder); y++) {
     if(y < 0 || y > 127) {
       printy++;
@@ -89,6 +94,7 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy)
     }
     printy++;
   }
+  //print hero
   attron(COLOR_PAIR(HERO_PAIR));
   mvaddch(hero_yspot,hero_xspot,'@');
   attroff(COLOR_PAIR(HERO_PAIR));
