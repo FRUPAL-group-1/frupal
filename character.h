@@ -2,6 +2,8 @@
 //
 // This is the header file for character.cpp.
 
+#include <ncurses.h>
+#include <string.h>
 
 using namespace std;
 
@@ -13,10 +15,14 @@ class Character
 
 		int checkEnergy();
 		void addEnergy(int added);
-		int spendEnergy(int spent);	
+		void spendEnergy(int spent);	
+
 		int checkWhiffles();
-		int addWhiffles(int added);
-		int spendWhiffles(int spent);
+		void addWhiffles(int added);
+		void spendWhiffles(int spent);
+
+		void gainBinoculars();
+		void gainBoat();
 
 	protected:
 		int yAxis;

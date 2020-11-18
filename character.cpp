@@ -25,30 +25,46 @@ Character::~Character()
 
 int Character::checkEnergy()
 {
-
+	return energy;
 }
 
 
 void Character::addEnergy(int added)
 {
+	energy += added;
 }
 
 
-int Character::spendEnergy(int spent);
+void Character::spendEnergy(int spent)
 {
+	energy -= spent;	
 }
 
 
 int Character::checkWhiffles()
 {
+	return whiffles;
 }
 
 
-int Character::addWhiffles(int added)
+void Character::addWhiffles(int added)
 {
+	whiffles += added;
 }
 
 
-int Character::spendWhiffles(int spent)
+void Character::spendWhiffles(int spent)
 {
+	whiffles -= spent;
+}
+
+void Character::gainBinoculars()
+{
+	binoculars = true;
+}
+
+
+void Character::gainBoat()
+{
+	boat = false;
 }
