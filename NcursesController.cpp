@@ -23,8 +23,6 @@ NcursesController::~NcursesController()
 
 void NcursesController::discover(int herox, int heroy, int discovered[128][128])
 {
-  herox++;
-  heroy++;
   if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
     discovered[heroy][herox] = 1;
   }
@@ -146,7 +144,7 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
   }
   //print hero
   attron(COLOR_PAIR(HERO_PAIR));
-  mvaddch(hero_yspot,hero_xspot,'@');
+  mvaddch(hero_yspot-1,hero_xspot-1,'@');
   attroff(COLOR_PAIR(HERO_PAIR));
   refresh();
 }
