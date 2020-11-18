@@ -1,22 +1,26 @@
-#include <iostream>
-#include <curses.h>
-#include <fstream>
-#include <iostream>
-#include <cstdlib>
-#include <math.h>
-using namespace std;
+//NcursesController class
+//handles the display of the frupal game
+//Displays map, character stats and options
 
-char map[128][128]; //**TESTING PURPOSES
+#include "NcursesController.h"
 
-//define names to the colorpair settings
-#define MEADOW_PAIR 1
-#define SWAMP_PAIR 2
-#define WATER_PAIR 3
-#define WALL_PAIR 4
-#define HERO_PAIR 5
-#define DIAMOND_PAIR 6
+NcursesController::NcursesController()
+{
+  MEADOW_PAIR = 1;
+  SWAMP_PAIR = 2;
+  WATER_PAIR = 3;
+  WALL_PAIR = 4;
+  HERO_PAIR = 5;
+  DIAMOND_PAIR = 6;
+}
 
-void initializeColor() //set up the color pairs for the program (foreground and background)
+NcursesController::~NcursesController()
+{
+
+}
+
+
+void NcursesController::initializeColor() //set up the color pairs for the program (foreground and background)
 {
   start_color();
   init_pair(MEADOW_PAIR, COLOR_BLACK, COLOR_GREEN);
@@ -27,21 +31,9 @@ void initializeColor() //set up the color pairs for the program (foreground and 
   init_pair(DIAMOND_PAIR, COLOR_WHITE, COLOR_CYAN);
 }
 
-//**ONLY FOR TESTING PURPOSES**
-void initializeMap() //fills 2d map array with characters
-{
-  ifstream in;
-  in.open("map.txt");
-  for(int y = 0; y < 128; y++){
-    for(int x = 0; x < 128; x++){
-      in >> map[y][x];
-    }
-  }
-  in.close();
-}
 
 //displays the current map frame, with the hero centered
-void displayFrame(char map[128][128], int herox, int heroy)
+void NcursesController::displayFrame(char map[128][128], int herox, int heroy)
 {
   erase(); //clear screen to prevent out of bounds
   int viewport_width = COLS - 30;
@@ -101,44 +93,4 @@ void displayFrame(char map[128][128], int herox, int heroy)
   mvaddch(hero_yspot,hero_xspot,'@');
   attroff(COLOR_PAIR(HERO_PAIR));
   refresh();
-}
-
-int main()
-{
-  initscr();
-  noecho();
-  nodelay(stdscr,true);
-  keypad(stdscr,true);
-  curs_set(0);
-
-  initializeMap();
-  initializeColor();
-  int xaxis = 0;
-  int yaxis = 0;
-  int keypress;
-  displayFrame(map,xaxis,yaxis);
-  while(1){
-    keypress = getch();
-    switch(keypress) {
-      case KEY_LEFT:
-        xaxis--;
-        displayFrame(map,xaxis,yaxis);
-        break;
-      case KEY_RIGHT:
-        xaxis++;
-        displayFrame(map,xaxis,yaxis);
-        break;
-      case KEY_UP:
-        yaxis--;
-        displayFrame(map,xaxis,yaxis);
-        break;
-      case KEY_DOWN:
-        yaxis++;
-        displayFrame(map,xaxis,yaxis);
-        break;
-    }
-  }
-
-  endwin();
-  return 0;
 }
