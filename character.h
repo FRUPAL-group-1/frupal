@@ -23,6 +23,8 @@ class Character
 
 		void gainBinoculars();
 		void gainBoat();
+		bool hasBoat();
+		bool hasBinoculars();
 
 	protected:
 		int yAxis;

@@ -68,3 +68,19 @@ void Character::gainBoat()
 {
 	boat = false;
 }
+
+
+bool Character::hasBoat()
+{
+	if (boat) return true;
+
+	else return false;
+}
+
+
+bool Character::hasBinoculars()
+{
+	if (binoculars) return true;
+
+	else return false;
+}
