@@ -14,8 +14,9 @@ class NcursesController
     ~NcursesController();
 
     void initializeColor();
-    void discover(int herox, int heroy, int discovered[128][128]);
-    void displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128]);
+    void discover(int herox, int heroy, int discovered[128][128], bool binocular);
+    void displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128], bool binocular);
+    void move_hero(char map[128][128], int discovered[128][128], Character &hero);
 
   private:
     //define names to the colorpair settings

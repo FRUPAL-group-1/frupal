@@ -21,7 +21,7 @@ NcursesController::~NcursesController()
 
 }
 
-void NcursesController::discover(int herox, int heroy, int discovered[128][128])
+void NcursesController::discover(int herox, int heroy, int discovered[128][128], bool binocular)
 {
   if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
     discovered[heroy][herox] = 1;
@@ -58,6 +58,72 @@ void NcursesController::discover(int herox, int heroy, int discovered[128][128])
   if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
     discovered[heroy][herox] = 1;
   }
+  if(binocular) {
+    herox++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    heroy++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    heroy++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    heroy++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    heroy--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    heroy--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    heroy--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    heroy--;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+    herox++;
+    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+      discovered[heroy][herox] = 1;
+    }
+  }
 }
 
 
@@ -75,9 +141,10 @@ void NcursesController::initializeColor() //set up the color pairs for the progr
 
 
 //displays the current map frame, with the hero centered
-void NcursesController::displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128])
+void NcursesController::displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128], bool binocular)
 {
   erase(); //clear screen to prevent out of bounds
+  discover(herox,heroy,binocular);
   int viewport_width = COLS - 30; //width of displayport, minus space to display options/info
   int viewport_height = LINES; //height of the window
   int hero_xspot = floor(viewport_width/2); //center of displayport x axis
@@ -147,4 +214,55 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
   mvaddch(hero_yspot-1,hero_xspot-1,'@');
   attroff(COLOR_PAIR(HERO_PAIR));
   refresh();
+}
+
+
+void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero)
+{
+  noecho();
+  nodelay(stdscr, true);
+  keypad(stdscr, true);
+  curs_set(0);
+  initializeColor();
+
+  int yaxis = hero.yAxis;
+  int xaxis = hero.xAxis;
+  int keypress;
+  bool repeat = true;
+  displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+
+  while(repeat)
+  {
+    keypress = getch();
+    switch(keypress) {
+      case 1:
+        xaxis--;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        break;
+
+      case 2:
+        yaxis++;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        break;
+
+      case 3:
+        yaxis--;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        break;
+
+      case 4:
+        xaxis++;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        break;
+
+      case 0:
+        repeat = false;
+        break;
+
+      default:
+        break;
+    }
+  }
+  hero.yAxis = yaxis;
+  hero.xAxis = xaxis;
 }
