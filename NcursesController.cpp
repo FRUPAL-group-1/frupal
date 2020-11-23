@@ -126,7 +126,26 @@ void NcursesController::discover(int herox, int heroy, int discovered[128][128],
   }
 }
 
-
+int NcursesController:checkMove(int xaxis, int yaxis, char map[128][128], bool boat)
+{
+  int good = 1;
+  switch(map[yaxis,xaxis])
+  {
+    case 'm':
+      break;
+    case 's':
+      break;
+    case 'w':
+      good = 0;
+      break;
+    case 'b':
+      if(boat)
+        break;
+      good = 0;
+      break;
+  }
+  return good;
+}
 
 void NcursesController::initializeColor() //set up the color pairs for the program (foreground and background)
 {
@@ -216,6 +235,14 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
   refresh();
 }
 
+void NcursesController:displayMove()
+{
+  int leftbuffer = COLS - 29;
+  mvprintw(6, leftbuffer, "1) Move left");
+  mvprintw(7, leftbuffer, "2) Move down");
+  mvprintw(8, leftbuffer, "3) Move up");
+  mvprintw(9, leftbuffer, "4) Move right");
+}
 
 void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero)
 {
@@ -233,26 +260,39 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
 
   while(repeat)
   {
+    displayMove();
     keypress = getch();
     switch(keypress) {
       case 1:
-        xaxis--;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        if(checkMove(xaxis-1, yaxis, map, hero.hasBoat()))
+        {
+          xaxis--;
+          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        }
         break;
 
       case 2:
-        yaxis++;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        if(checkMove(xaxis, yaxis+1, map, hero.hasBoat()))
+        {
+          yaxis++;
+          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        }
         break;
 
       case 3:
-        yaxis--;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        if(checkMove(xaxis, yaxis-1, map, hero.hasBoat()))
+        {
+          yaxis--;
+          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        }
         break;
 
       case 4:
-        xaxis++;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        if(checkMove(xaxis+1, yaxis, map, hero.hasBoat()))
+        {
+          xaxis++;
+          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        }
         break;
 
       case 0:
