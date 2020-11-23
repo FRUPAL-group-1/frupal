@@ -237,7 +237,7 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
 
 void NcursesController:displayMove()
 {
-  int leftbuffer = COLS - 29;
+  int leftbuffer = COLS - 28;
   mvprintw(6, leftbuffer, "1) Move left");
   mvprintw(7, leftbuffer, "2) Move down");
   mvprintw(8, leftbuffer, "3) Move up");
