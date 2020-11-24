@@ -1,3 +1,6 @@
+#ifndef GAMECONT_CPP
+#define GAMECONT_CPP
+
 //impliments all of the gameController functions
 
 #include "gameController.h"
@@ -13,6 +16,7 @@ GameController::~GameController()
 
 bool GameController::update()
 {
+  initscr();
   char ch;  //declare once
   ch = getInput(ch)
   do
@@ -62,3 +66,5 @@ char gameController::getInput(ch)
   cin >> ch;
   return toupper(ch);
 }
+
+#endif  //GAMECONT_CPP

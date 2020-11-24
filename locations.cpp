@@ -1,3 +1,5 @@
+#ifndef LOCATIONS_CPP
+#define LOCATIONS_CPP
 // C. Gunnar Rosenberg
 // Locations Class
 
@@ -40,3 +42,5 @@ void Locations::destroy(int x, int y){
 string Locations::keyGen(int x, int y){
   return (to_string(x) + "|" + to_string(y));
 }
+
+#endif //LOCATIONS_CPP
