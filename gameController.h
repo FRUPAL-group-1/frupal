@@ -8,6 +8,7 @@
 #include "NcursesController.h"
 #include "charachter.h"
 #include "locations.h"
+#include "map.h"
 
 using namespace std;
 
@@ -15,8 +16,13 @@ class GameController
 {
   public:
     Locations locations;
-    Charachter Charachter;
+    Map maps;
+    Character hero;
     NcursesController ncursescontroller;
-  private:
 
-}
+    GameController();
+    ~GameController();
+
+    bool update();
+  private:
+};
