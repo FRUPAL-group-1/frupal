@@ -18,7 +18,7 @@ bool GameController::update()
 {
   initscr();
   char ch;  //declare once
-  ch = getInput(ch)
+  ch = getInput(ch);
   do
   {
     switch(ch)
@@ -57,11 +57,12 @@ bool GameController::update()
     }
 
   }while((ch) != 'Q');
+  return 0;
 }
 
 
 //helper function to keep loop clean
-char gameController::getInput(ch)
+char GameController::getInput(char ch)
 {
   cin >> ch;
   return toupper(ch);
