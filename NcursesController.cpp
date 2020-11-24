@@ -129,6 +129,8 @@ void NcursesController::discover(int herox, int heroy, int discovered[128][128],
 int NcursesController:checkMove(int xaxis, int yaxis, char map[128][128], bool boat)
 {
   int good = 1;
+  if(xaxis < 0 || xaxis > 127 || yaxis < 0 || yaxis > 127)
+    return 0;
   switch(map[yaxis,xaxis])
   {
     case 'm':
