@@ -246,25 +246,16 @@ void NcursesController:displayMove()
   mvprintw(9, leftbuffer, "4) Move right");
 }
 
-void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero)
+void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress)
 {
-  noecho();
-  nodelay(stdscr, true);
-  keypad(stdscr, true);
   curs_set(0);
   initializeColor();
 
   int yaxis = hero.yAxis;
   int xaxis = hero.xAxis;
-  int keypress;
-  bool repeat = true;
-  displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
 
-  while(repeat)
-  {
-    displayMove();
-    keypress = getch();
-    switch(keypress) {
+  displayMove();
+  switch(keypress) {
       case 1:
         if(checkMove(xaxis-1, yaxis, map, hero.hasBoat()))
         {
@@ -295,10 +286,6 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
           xaxis++;
           displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
         }
-        break;
-
-      case 0:
-        repeat = false;
         break;
 
       default:
