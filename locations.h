@@ -4,16 +4,17 @@
 #include <string.h>
 #include <map>
 #include <any>
+#include "grovnick.h"
 using namespace std;
 
 class Locations {
-  protected: 
     map<string, any> grovnicks;
+    string keyGen(int x, int y);
 
   public:
-    any get(string key);
-    bool set(string key, any grovnick);	
-    void destroy(string key);
+    Grovnick get(int x, int y);
+    bool set(int x, int y, Grovnick obj);	
+    void destroy(int x, int y);
 
 };
 

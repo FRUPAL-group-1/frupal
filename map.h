@@ -5,6 +5,8 @@ class Map
 		Map();
 		~Map();
 
+		Locations grovnicks; // ex usage: grovnicks.get(1, 20);
+
 		void initializeMap(string fileName);
 		bool editTile(char tileType, int x, int y);
 
