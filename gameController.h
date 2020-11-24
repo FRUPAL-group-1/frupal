@@ -6,8 +6,9 @@
 //loads in the csv mapdata
 
 #include "NcursesController.h"
-#include "charachter.h"
+#include "character.h"
 #include "locations.h"
+#include "map.h"
 
 using namespace std;
 
@@ -15,8 +16,14 @@ class GameController
 {
   public:
     Locations locations;
-    Charachter Charachter;
+    Character Character;
     NcursesController ncursescontroller;
+
+    Map currentMap;
+
+    bool loadMap();
+
+    
   private:
 
 }
