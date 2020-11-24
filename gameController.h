@@ -16,14 +16,13 @@ class GameController
 {
   public:
     Locations locations;
-    Character Character;
+    Character hero;
     NcursesController ncursescontroller;
-
     Map currentMap;
-
-    bool loadMap();
-
     
-  private:
-
-}
+    GameController();
+    ~GameController();
+    
+    bool loadMap();
+    bool update();
+};
