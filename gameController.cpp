@@ -49,8 +49,7 @@ bool GameController::update()
         break;
 
       default:
-        cout << "\nYou need to enter North, East, South, West!\n";
-        getinput();
+        break;
     }
 
   }while((ch) != 'Q');
@@ -60,7 +59,6 @@ bool GameController::update()
 //helper function to keep loop clean
 char gameController::getInput(ch)
 {
-  cout << "What direction did you want to go?: ";
   cin >> ch;
   return toupper(ch);
 }
