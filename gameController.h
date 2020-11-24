@@ -9,6 +9,7 @@
 #include "character.h"
 #include "locations.h"
 #include "map.h"
+#include <iostream> //may be defined in a global file
 
 using namespace std;
 
@@ -19,10 +20,11 @@ class GameController
     Character hero;
     NcursesController ncursescontroller;
     Map currentMap;
-    
+
     GameController();
     ~GameController();
-    
+
     bool loadMap();
     bool update();
+    char getInput(char ch);
 };

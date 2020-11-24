@@ -1,3 +1,6 @@
+#ifndef GROVNICK_CPP
+#define GROVNICK_CPP
+
 //CS300 Fall 2020
 //Group 1
 //grovnick.cpp
@@ -203,3 +206,5 @@ Treasure::~Treasure()
 {
 	//TODO fill
 }
+
+#endif  //GROVNICK_CPP

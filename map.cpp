@@ -1,3 +1,6 @@
+#ifndef MAP_CPP
+#define MAP_CPP
+
 //map.cpp
 #include "map.h"
 
@@ -37,3 +40,5 @@ bool map::editTile(char tileType, int x, int y)
   map[y][x] = tileType;
   return true;
 }
+
+#ifdef //MAP_CPP

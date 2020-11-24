@@ -1,3 +1,6 @@
+#ifndef CHAR_CPP
+#define CHAR_CPP
+
 // character.cpp
 //
 // This files contains the character class.
@@ -84,3 +87,5 @@ bool Character::hasBinoculars()
 
 	else return false;
 }
+
+#endif  //CHAR_CPP
