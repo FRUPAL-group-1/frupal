@@ -8,7 +8,7 @@
 using namespace std;
 
 class Locations {
-    map<string, any> grovnicks;
+    map<string, Grovnick> grovnicks;
     string keyGen(int x, int y);
 
   public:
