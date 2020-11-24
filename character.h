@@ -25,12 +25,14 @@ class Character
 		void gainBoat();
 		bool hasBoat();
 		bool hasBinoculars();
-
-	protected:
+	
 		int yAxis;
 		int xAxis;
 		int energy;
 		int whiffles;
+
+	protected:
+
 		bool binoculars;
 		bool boat;
 };
