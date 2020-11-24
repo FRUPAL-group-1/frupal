@@ -1,6 +1,6 @@
 //impliments all of the gameController functions
 
-#include "gameCongroller.h"
+#include "gameController.h"
 
 
 
