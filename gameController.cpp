@@ -16,6 +16,7 @@ GameController::~GameController()
 
 bool GameController::update()
 {
+
   initscr();
   char ch;  //declare once
   ch = getInput(ch);
@@ -58,6 +59,7 @@ bool GameController::update()
 
   }while((ch) != 'Q');
   return 0;
+  //displayFrame(maps.map, hero.herox, hero.heroy, maps.discarded, hero.binocular);
 }
 
 
@@ -69,3 +71,4 @@ char GameController::getInput(char ch)
 }
 
 #endif  //GAMECONT_CPP
+
