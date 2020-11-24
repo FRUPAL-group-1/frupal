@@ -9,6 +9,7 @@
 #include "character.h"
 #include "locations.h"
 #include "map.h"
+#include <iostream> //may be defined in a global file
 
 using namespace std;
 
@@ -25,4 +26,5 @@ class GameController
 
     bool loadMap();
     bool update();
+    char getInput(char ch);
 };

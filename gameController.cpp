@@ -3,17 +3,64 @@
 #include "gameController.h"
 
 
-<<<<<<< HEAD
 GameController::GameController()
 {
 }
 GameController::~GameController()
 {
 }
+
+
 bool GameController::update()
 {
-  displayFrame(maps.map, hero.herox, hero.heroy, maps.discarded, hero.binocular);
-}
-=======
+  char ch;  //declare once
+  ch = getInput(ch)
+  do
+  {
+    switch(ch)
+    {
+      //case 2
+      case 'N':
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2);
+        getinput();
+        break;
+        
+      //case 4
+      case 'E':
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
+        getinput();
+        break;
 
->>>>>>> 8cce4b81a4ec2d99fe40ed19c967bcf6af82fd1e
+      //case 3
+      case 'S':
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3);
+        getinput();
+        break;
+
+      //case 1
+      case 'W':
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1);
+        getinput();
+        break;
+
+      //quit
+      case 'Q':
+        return 0;
+        break;
+
+      default:
+        cout << "\nYou need to enter North, East, South, West!\n";
+        getinput();
+    }
+
+  }while((ch) != 'Q');
+}
+
+
+//helper function to keep loop clean
+char gameController::getInput(ch)
+{
+  cout << "What direction did you want to go?: ";
+  cin >> ch;
+  return toupper(ch);
+}
