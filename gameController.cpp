@@ -25,26 +25,26 @@ bool GameController::update()
     {
       //case 2
       case 'N':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2);
-        getinput();
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero);
+        getInput();
         break;
         
       //case 4
       case 'E':
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
-        getinput();
+        getInput();
         break;
 
       //case 3
       case 'S':
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3);
-        getinput();
+        getInput();
         break;
 
       //case 1
       case 'W':
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1);
-        getinput();
+        getInput();
         break;
 
       //quit
