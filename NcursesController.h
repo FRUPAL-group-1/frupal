@@ -19,7 +19,7 @@ class NcursesController
     void displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128], bool binocular);
     void move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress);
     int checkMove(int xaxis, int yaxis, char map[128][128], bool boat);
-    void displayMove();
+    void displayMove(int whiffles, int energy);
 
   private:
     //define names to the colorpair settings
