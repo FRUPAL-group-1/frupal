@@ -1,6 +1,7 @@
 //map.h
 #include "locations.h"
 #include "grovnick.h"
+#include <fstream>
 
 class Map
 {
