@@ -5,18 +5,18 @@
 #include "map.h"
 
 //default constructor
-map::Map()
+Map::Map()
 {
   discovered = {{0}};
 }
 
 //deconstructor
-map::~Map()
+Map::~Map()
 {
 
 }
 
-int map::initializeMap(string fileName)
+int Map::initializeMap(string fileName)
 {
   ifstream in;
   in.open(fileName);
@@ -33,7 +33,7 @@ int map::initializeMap(string fileName)
   }
 }
 
-bool map::editTile(char tileType, int x, int y)
+bool Map::editTile(char tileType, int x, int y)
 {
   if(x < 0 || x > 127 || y < 0 || y > 127)
     return false;
