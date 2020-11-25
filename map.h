@@ -1,5 +1,6 @@
 //map.h
 #include "locations.h"
+#include "grovnick.h"
 #include <fstream>
 
 class Map
@@ -16,5 +17,6 @@ class Map
 
 		char map[128][128];
 		char discovered[128][128];
+		Grovnick grovnicks[128][128];
 
 };
