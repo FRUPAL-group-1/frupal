@@ -240,7 +240,7 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
   refresh();
 }
 
-void NcursesController::displayMove()
+void NcursesController::displayMove(int whiffles, int energy)
 {
   int leftbuffer = COLS - 28;
   mvprintw(6, leftbuffer, "Options:");
@@ -248,6 +248,9 @@ void NcursesController::displayMove()
   mvprintw(8, leftbuffer, "2) Move South");
   mvprintw(9, leftbuffer, "3) Move North");
   mvprintw(10, leftbuffer, "4) Move East");
+
+  mvprintw(LINES-1, leftbuffer, "Energy: %d", whiffles);
+  mvprintw(LINES-2, leftbuffer, "Whiffles: %d", energy);
 }
 
 void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress)
@@ -258,13 +261,14 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
   int yaxis = hero.yAxis;
   int xaxis = hero.xAxis;
 
-  displayMove();
+  displayMove(hero.whiffles,hero.energy);
   switch(keypress) {
     case 1:
       if(checkMove(xaxis-1, yaxis, map, hero.hasBoat()))
       {
         xaxis--;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayMove(hero.whiffles,hero.energy);
       }
       break;
 
@@ -273,6 +277,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       {
         yaxis++;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayMove(hero.whiffles,hero.energy);
       }
       break;
 
@@ -281,6 +286,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       {
         yaxis--;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayMove(hero.whiffles,hero.energy);
       }
       break;
 
@@ -289,6 +295,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       {
         xaxis++;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayMove(hero.whiffles,hero.energy);
       }
       break;
 
