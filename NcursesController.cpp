@@ -244,10 +244,10 @@ void NcursesController::displayMove()
 {
   int leftbuffer = COLS - 28;
   mvprintw(6, leftbuffer, "Options:");
-  mvprintw(7, leftbuffer, "w) Move West");
-  mvprintw(8, leftbuffer, "s) Move South");
-  mvprintw(9, leftbuffer, "n) Move North");
-  mvprintw(10, leftbuffer, "e) Move East");
+  mvprintw(7, leftbuffer, "1) Move West");
+  mvprintw(8, leftbuffer, "2) Move South");
+  mvprintw(9, leftbuffer, "3) Move North");
+  mvprintw(10, leftbuffer, "4) Move East");
 }
 
 void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress)
