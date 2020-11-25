@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <math.h>
+#include "character.h"
 
 using namespace std;
 
