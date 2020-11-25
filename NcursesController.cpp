@@ -129,12 +129,12 @@ void NcursesController::discover(int herox, int heroy, int discovered[128][128],
   }
 }
 
-int NcursesController:checkMove(int xaxis, int yaxis, char map[128][128], bool boat)
+int NcursesController::checkMove(int xaxis, int yaxis, char map[128][128], bool boat)
 {
   int good = 1;
   if(xaxis < 0 || xaxis > 127 || yaxis < 0 || yaxis > 127)
     return 0;
-  switch(map[yaxis,xaxis])
+  switch(map[yaxis][xaxis])
   {
     case 'm':
       break;
@@ -168,7 +168,7 @@ void NcursesController::initializeColor() //set up the color pairs for the progr
 void NcursesController::displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128], bool binocular)
 {
   erase(); //clear screen to prevent out of bounds
-  discover(herox,heroy,binocular);
+  discover(herox,heroy,discovered,binocular);
   int viewport_width = COLS - 30; //width of displayport, minus space to display options/info
   int viewport_height = LINES; //height of the window
   int hero_xspot = floor(viewport_width/2); //center of displayport x axis
@@ -240,7 +240,7 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
   refresh();
 }
 
-void NcursesController:displayMove()
+void NcursesController::displayMove()
 {
   int leftbuffer = COLS - 28;
   mvprintw(6, leftbuffer, "1) Move left");
@@ -259,45 +259,43 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
 
   displayMove();
   switch(keypress) {
-      case 1:
-        if(checkMove(xaxis-1, yaxis, map, hero.hasBoat()))
-        {
-          xaxis--;
-          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-        }
-        break;
+    case 1:
+      if(checkMove(xaxis-1, yaxis, map, hero.hasBoat()))
+      {
+        xaxis--;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+      }
+      break;
 
-      case 2:
-        if(checkMove(xaxis, yaxis+1, map, hero.hasBoat()))
-        {
-          yaxis++;
-          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-        }
-        break;
+    case 2:
+      if(checkMove(xaxis, yaxis+1, map, hero.hasBoat()))
+      {
+        yaxis++;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+      }
+      break;
 
-      case 3:
-        if(checkMove(xaxis, yaxis-1, map, hero.hasBoat()))
-        {
-          yaxis--;
-          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-        }
-        break;
+    case 3:
+      if(checkMove(xaxis, yaxis-1, map, hero.hasBoat()))
+      {
+        yaxis--;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+      }
+      break;
 
-      case 4:
-        if(checkMove(xaxis+1, yaxis, map, hero.hasBoat()))
-        {
-          xaxis++;
-          displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-        }
-        break;
+    case 4:
+      if(checkMove(xaxis+1, yaxis, map, hero.hasBoat()))
+      {
+        xaxis++;
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+      }
+      break;
 
-      default:
-        break;
-    }
+    default:
+      break;
   }
   hero.yAxis = yaxis;
   hero.xAxis = xaxis;
 }
-
 
 #endif  //NCURSES_CPP
