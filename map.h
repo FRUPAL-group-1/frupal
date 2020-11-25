@@ -1,5 +1,6 @@
 //map.h
 #include "locations.h"
+#include <fstream>
 
 class Map
 {

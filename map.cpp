@@ -5,19 +5,25 @@
 #include "map.h"
 
 //default constructor
-map::Map()
+Map::Map()
 {
-  discovered = {{0}};
+
 }
 
 //deconstructor
-map::~Map()
+Map::~Map()
 {
 
 }
 
-int map::initializeMap(string fileName)
+int Map::initializeMap(string fileName)
 {
+  for(int i = 0; i < 128; i++){
+    for(int j = 0; j < 128; j++){
+      discovered[i][j] = 0;
+    }
+  }
+
   ifstream in;
   in.open(fileName);
   if(in.is_open()){
@@ -27,13 +33,13 @@ int map::initializeMap(string fileName)
       }
     }
     in.close();
-    return 0;
   } else {
     return 1;
   }
+  return 0;
 }
 
-bool map::editTile(char tileType, int x, int y)
+bool Map::editTile(char tileType, int x, int y)
 {
   if(x < 0 || x > 127 || y < 0 || y > 127)
     return false;
