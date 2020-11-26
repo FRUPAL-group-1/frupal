@@ -304,6 +304,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
   }
   hero.yAxis = yaxis;
   hero.xAxis = xaxis;
+  mvprintw(16, COLS-28, "hero y: %d  Hero x: %d", hero.yAxis, hero.xAxis);
 }
 
 #endif  //NCURSES_CPP

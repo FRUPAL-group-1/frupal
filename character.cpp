@@ -11,8 +11,8 @@
 
 Character::Character()
 {
-	yAxis = 0;
-	xAxis = 0;
+	yAxis = 1;
+	xAxis = 1;
 	energy = 100;
 	whiffles = 1000;
 	binoculars = false;
@@ -40,7 +40,7 @@ void Character::addEnergy(int added)
 
 void Character::spendEnergy(int spent)
 {
-	energy -= spent;	
+	energy -= spent;
 }
 
 
