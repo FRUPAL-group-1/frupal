@@ -16,40 +16,34 @@ GameController::~GameController()
 
 bool GameController::update()
 {
-
-  initscr();
-  char ch;  //declare once
-  ch = getInput(ch);
-  do
-  {
-    switch(ch)
+  int keypress = 5;  //declare once
+  ncursescontroller.displayFrame(currentMap.map, hero.xAxis, hero.yAxis, currentMap.discovered, false);
+  while(keypress != 0){
+    keypress = getch();
+    switch(keypress)
     {
-      //case 2
-      case 'N':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero);
-        getInput();
-        break;
-        
-      //case 4
-      case 'E':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
-        getInput();
-        break;
-
-      //case 3
-      case 'S':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3);
-        getInput();
-        break;
-
       //case 1
-      case 'W':
+      case KEY_LEFT:
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1);
-        getInput();
         break;
 
-      //quit
-      case 'Q':
+        //case 2
+      case KEY_DOWN:
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2);
+        break;
+
+        //case 3
+      case KEY_UP:
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3);
+        break;
+
+        //case 4
+      case KEY_RIGHT:
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
+        break;
+
+        //quit
+      case '0':
         return 0;
         break;
 
@@ -57,17 +51,15 @@ bool GameController::update()
         break;
     }
 
-  }while((ch) != 'Q');
+  }
   return 0;
-  //displayFrame(maps.map, hero.herox, hero.heroy, maps.discarded, hero.binocular);
 }
 
 
-//helper function to keep loop clean
-char GameController::getInput(char ch)
+bool GameController::loadMap()
 {
-  cin >> ch;
-  return toupper(ch);
+  currentMap.initializeMap();
+  return true;
 }
 
 #endif  //GAMECONT_CPP

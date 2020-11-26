@@ -3,6 +3,7 @@
 
 //map.cpp
 #include "map.h"
+using namespace std;
 
 //default constructor
 Map::Map()
@@ -16,16 +17,17 @@ Map::~Map()
 
 }
 
-int Map::initializeMap(string fileName)
+int Map::initializeMap()
 {
   for(int i = 0; i < 128; i++){
     for(int j = 0; j < 128; j++){
       discovered[i][j] = 0;
     }
   }
+  discovered[0][127] = 0;
 
   ifstream in;
-  in.open(fileName);
+  in.open("map.txt");
   if(in.is_open()){
     for(int y = 0; y < 128; y++){
       for(int x = 0; x < 128; x++){
@@ -47,4 +49,4 @@ bool Map::editTile(char tileType, int x, int y)
   return true;
 }
 
-#ifdef //MAP_CPP
+#endif //MAP_CPP

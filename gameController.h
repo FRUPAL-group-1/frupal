@@ -6,17 +6,13 @@
 //loads in the csv mapdata
 
 #include "NcursesController.h"
-#include "character.h"
-#include "locations.h"
 #include "map.h"
-#include <iostream> //may be defined in a global file
 
 using namespace std;
 
 class GameController
 {
   public:
-    Locations locations;
     Character hero;
     NcursesController ncursescontroller;
     Map currentMap;
@@ -26,5 +22,4 @@ class GameController
 
     bool loadMap();
     bool update();
-    char getInput(char ch);
 };
