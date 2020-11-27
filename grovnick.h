@@ -14,7 +14,7 @@
 */
 #ifndef GROVNICK
 #include <iostream>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -37,7 +37,7 @@ class Grovnick
 		string name;
 
 		//other functions and variables?
-}
+};
 
 class Food: public Grovnick
 {
@@ -48,7 +48,7 @@ class Food: public Grovnick
 		int restore;
 		bool is_consumed;
 
-}
+};
 
 class Obstacle: public Grovnick
 {
@@ -58,7 +58,7 @@ class Obstacle: public Grovnick
 		~Obstacle();
 		int obs_type;	//how many ints? different than grovnick::type?
 		//obs_type == 1 for tree, 2 for boulder
-}
+};
 
 class Tool: public Grovnick
 {
@@ -66,11 +66,12 @@ class Tool: public Grovnick
 		Tool();
 		Tool(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int tl_tpe, int effectiveness);
 		~Tool();
+		bool type_match(Obstacle);
 		int tool_type;  //different than grovnick::type?
 		//tool_type == 1 for axe (for trees), 2 for hammer (for boulder); essentially just needs to match obstacle type
 		int item_effectiveness;
 		//doesn't need string name because inherited
-}
+};
 
 class Royal_Diamond: public Grovnick
 {
@@ -82,7 +83,7 @@ class Royal_Diamond: public Grovnick
 		int grand_prize; 
 
 
-}
+};
 
 class Clue: public Grovnick
 {
@@ -93,7 +94,7 @@ class Clue: public Grovnick
 
 		string clue;
 		bool truthful;
-}
+};
 
 class Treasure: public Grovnick
 {
@@ -103,5 +104,5 @@ class Treasure: public Grovnick
 		~Treasure();
 	
 		int treasure;
-}
+};
 #endif //GROVNICK

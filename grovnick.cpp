@@ -9,14 +9,15 @@
 
 Grovnick::Grovnick()
 {
-	key == NULL;
+	key = "";
 	y_axis = 0;
 	x_axis = 0;
 	cost = 0;
 	type = 0;
 	//what to do for char sign?
-	name = NULL;
+	name = "";
 }
+
 
 Grovnick::Grovnick(string ky, int y, int x, int cst, int tpe, char sgn, string nme)
 {
@@ -29,10 +30,13 @@ Grovnick::Grovnick(string ky, int y, int x, int cst, int tpe, char sgn, string n
 	name.assign(nme);
 }
 
+
 Grovnick::~Grovnick()
 {
 	//strings count as dynamic memory and need to be deleted? fill
 }
+
+
 void Grovnick::display_on()
 {
 	//unsure how this interacts with ncurses; discuss with team
@@ -45,6 +49,7 @@ void Grovnick::display_on()
 	cout << "Price: " << cost << endl;
 	cout << "Type: " << type << endl;
 }
+
 
 bool Grovnick::is_match(int x, int y)
 {
@@ -61,6 +66,8 @@ Food::Food() //initialization list in constructor?
 	restore = 0;
 	is_consumed = false;	
 }
+
+
 Food::Food(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int rstre, bool consumed)
 {
 	key.assign(ky);
@@ -74,6 +81,8 @@ Food::Food(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int 
 	restore = rstre;
 	is_consumed = consumed;
 }
+
+
 Food::~Food()
 {
 	//TODO fill
@@ -85,6 +94,8 @@ Obstacle::Obstacle()
 	//same concerns as food: initialization list or...?
 	obs_type = 0;
 }
+
+
 Obstacle::Obstacle(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int obs_tpe)
 {
 	key.assign(ky);
@@ -97,6 +108,8 @@ Obstacle::Obstacle(string ky, int y, int x, int cst, int tpe, char sgn, string n
 	//initialization list instead?
 	obs_type = obs_tpe;
 }
+
+
 Obstacle::~Obstacle()
 {
 	//TODO fill
@@ -108,6 +121,8 @@ Tool::Tool()
 	//again, same concerns here about initialization list
 	item_effectiveness = 0;	
 }
+
+
 Tool::Tool(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int tl_type, int effectiveness)
 {
 	key.assign(ky);
@@ -121,10 +136,13 @@ Tool::Tool(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int 
 	tool_type = tl_type;
 	item_effectiveness = effectiveness;	
 }
+
+
 Tool::~Tool()
 {
 	//TODO fill
 }
+
 
 bool Tool::type_match(Obstacle to_check)
 {
@@ -135,12 +153,13 @@ bool Tool::type_match(Obstacle to_check)
 }
 
 
-
 Royal_Diamond::Royal_Diamond()
 {
 	//again, same concerns here about initialization list
 	grand_prize = 0;
 }
+
+
 Royal_Diamond::Royal_Diamond(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int prize)
 {
 	key.assign(ky);
@@ -153,6 +172,8 @@ Royal_Diamond::Royal_Diamond(string ky, int y, int x, int cst, int tpe, char sgn
 	//initialization list instead?
 	grand_prize = prize;
 }
+
+
 Royal_Diamond::~Royal_Diamond()
 {
 	//TODO fill
@@ -162,9 +183,11 @@ Royal_Diamond::~Royal_Diamond()
 Clue::Clue()
 {
 	//again, same concerns here about initialization list
-	clue = NULL;
+	clue = "";
 	truthful = false;
 }
+
+
 Clue::Clue(string ky, int y, int x, int cst, int tpe, char sgn, string nme, string clu, bool truth)
 {
 	key.assign(ky);
@@ -178,11 +201,12 @@ Clue::Clue(string ky, int y, int x, int cst, int tpe, char sgn, string nme, stri
 	clue.assign(clu);
 	truthful = truth;
 }
-CLue::~Clue()
+
+
+Clue::~Clue()
 {
 	//TODO fill
 }
-
 
 
 Treasure::Treasure()
@@ -190,6 +214,8 @@ Treasure::Treasure()
 	//again, same concerns here about initialization list
 	treasure = 0;
 }
+
+
 Treasure::Treasure(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int prize)
 {
 	key.assign(ky);
@@ -202,6 +228,8 @@ Treasure::Treasure(string ky, int y, int x, int cst, int tpe, char sgn, string n
 	//initialization list instead?
 	treasure = prize;
 }
+
+
 Treasure::~Treasure()
 {
 	//TODO fill

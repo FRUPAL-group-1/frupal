@@ -129,7 +129,7 @@ void NcursesController::discover(int herox, int heroy, int discovered[128][128],
   }
 }
 
-int NcursesController::checkMove(int xaxis, int yaxis, char map[128][128], bool boat)
+int NcursesController::checkMove(int xaxis, int yaxis, char map[128][128], bool boat, Character &hero)
 {
   int good = 1;
   if(xaxis < 0 || xaxis > 127 || yaxis < 0 || yaxis > 127)
@@ -139,6 +139,7 @@ int NcursesController::checkMove(int xaxis, int yaxis, char map[128][128], bool 
     case 'm':
       break;
     case 's':
+      hero.spendEnergy(1);
       break;
     case 'w':
       good = 0;
@@ -244,13 +245,15 @@ void NcursesController::displayMove(int whiffles, int energy)
 {
   int leftbuffer = COLS - 28;
   mvprintw(6, leftbuffer, "Options:");
-  mvprintw(7, leftbuffer, "1) Move West");
-  mvprintw(8, leftbuffer, "2) Move South");
-  mvprintw(9, leftbuffer, "3) Move North");
-  mvprintw(10, leftbuffer, "4) Move East");
+  mvprintw(7, leftbuffer, "W: Move North");
+  mvprintw(8, leftbuffer, "A: Move West");
+  mvprintw(9, leftbuffer, "S: Move South");
+  mvprintw(10, leftbuffer, "D: Move East");
 
-  mvprintw(LINES-1, leftbuffer, "Energy: %d", whiffles);
-  mvprintw(LINES-2, leftbuffer, "Whiffles: %d", energy);
+
+
+  mvprintw(LINES-1, leftbuffer, "Energy: %d", energy);
+  mvprintw(LINES-2, leftbuffer, "Whiffles: %d", whiffles);
 }
 
 void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress)
@@ -264,37 +267,41 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
   displayMove(hero.whiffles,hero.energy);
   switch(keypress) {
     case 1:
-      if(checkMove(xaxis-1, yaxis, map, hero.hasBoat()))
+      if(checkMove(xaxis-1, yaxis, map, hero.hasBoat(), hero))
       {
         xaxis--;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+	hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;
 
     case 2:
-      if(checkMove(xaxis, yaxis+1, map, hero.hasBoat()))
+      if(checkMove(xaxis, yaxis+1, map, hero.hasBoat(), hero))
       {
         yaxis++;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+	hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;
 
     case 3:
-      if(checkMove(xaxis, yaxis-1, map, hero.hasBoat()))
+      if(checkMove(xaxis, yaxis-1, map, hero.hasBoat(), hero))
       {
         yaxis--;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+	hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;
 
     case 4:
-      if(checkMove(xaxis+1, yaxis, map, hero.hasBoat()))
+      if(checkMove(xaxis+1, yaxis, map, hero.hasBoat(), hero))
       {
         xaxis++;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+	hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;

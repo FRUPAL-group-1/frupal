@@ -18,7 +18,7 @@ class NcursesController
     void discover(int herox, int heroy, int discovered[128][128], bool binocular);
     void displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128], bool binocular);
     void move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress);
-    int checkMove(int xaxis, int yaxis, char map[128][128], bool boat);
+    int checkMove(int xaxis, int yaxis, char map[128][128], bool boat, Character &hero);
     void displayMove(int whiffles, int energy);
 
   private:
