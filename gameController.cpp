@@ -23,27 +23,27 @@ bool GameController::update()
     switch(keypress)
     {
       //case 1
-      case KEY_LEFT:
+      case 'a':
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1);
         break;
 
         //case 2
-      case KEY_DOWN:
+      case 's':
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2);
         break;
 
         //case 3
-      case KEY_UP:
+      case 'w':
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3);
         break;
 
         //case 4
-      case KEY_RIGHT:
+      case 'd':
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
         break;
 
         //quit
-      case '0':
+      case 'q':
         return 0;
         break;
 
