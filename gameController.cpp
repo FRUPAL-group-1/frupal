@@ -47,6 +47,26 @@ bool GameController::update()
         return 0;
         break;
 
+	//cursor up
+      case KEY_UP:
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 1);
+	break;
+	
+	//cursor down
+      case KEY_DOWN:
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 2);
+	break;	
+
+	//cursor left
+      case KEY_LEFT:
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 3);
+	break;
+
+	//cursor right
+      case KEY_RIGHT:
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 4);
+	break;
+
       default:
         break;
     }

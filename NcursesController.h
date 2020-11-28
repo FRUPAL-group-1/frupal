@@ -20,6 +20,8 @@ class NcursesController
     void move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress);
     int checkMove(int xaxis, int yaxis, char map[128][128], bool boat, Character &hero);
     void displayMove(int whiffles, int energy);
+    void move_cursor(char map[128][128], int discovered[128][128], int keypress);
+    int checkCursorMove(int cursor_x, int cursor_y);
 
   private:
     //define names to the colorpair settings
