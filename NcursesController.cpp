@@ -153,6 +153,7 @@ int NcursesController::checkMove(int xaxis, int yaxis, char map[128][128], bool 
   return good;
 }
 
+
 void NcursesController::initializeColor() //set up the color pairs for the program (foreground and background)
 {
   start_color();
@@ -312,6 +313,73 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
   hero.yAxis = yaxis;
   hero.xAxis = xaxis;
   mvprintw(16, COLS-28, "hero y: %d  Hero x: %d", hero.yAxis, hero.xAxis);
+
+  // set cursor to hero
+  move(LINES/2, (COLS-30)/2);
+}
+
+
+// This function checks to make sure the cursor is not out-of-bounds
+int NcursesController::checkCursorMove(int cursor_x, int cursor_y)
+{
+	int good = 1;
+	
+	if(cursor_x < 0 || cursor_x > COLS-30 || cursor_y < 0 || cursor_y > LINES)
+    		return 0;
+	
+	return good;
+}
+
+
+// This function moves the cursor, not the hero
+void NcursesController::move_cursor(char map[128][128], int discovered[128][128], int keypress)
+{
+  curs_set(1);
+  
+  int cursor_y, cursor_x;
+
+  getyx(stdscr, cursor_y, cursor_x);
+
+  switch(keypress) {
+
+      case 1:
+	if(checkCursorMove(cursor_x, cursor_y))
+	{
+		--cursor_y;
+	}
+
+	break;
+	
+      case 2:
+	if(checkCursorMove(cursor_x, cursor_y))
+	{
+		++cursor_y;
+	}
+
+	break;	
+
+      case 3:
+	if(checkCursorMove(cursor_x, cursor_y))
+	{
+		--cursor_x;
+	}
+
+	break;
+
+      case 4:
+	if(checkCursorMove(cursor_x, cursor_y))
+	{
+		++cursor_x;
+	}
+
+	break;
+
+      default:
+	break;
+  }
+  
+  wmove(stdscr, cursor_y, cursor_x);
+  refresh();
 }
 
 #endif  //NCURSES_CPP
