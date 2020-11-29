@@ -17,7 +17,8 @@ GameController::~GameController()
 bool GameController::update()
 {
   int keypress = 5;  //declare once
-  ncursescontroller.displayFrame(currentMap.map, hero.xAxis, hero.yAxis, currentMap.discovered, false);
+  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
+  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1);
   while(keypress != 0){
     keypress = getch();
     switch(keypress)
@@ -51,11 +52,11 @@ bool GameController::update()
       case KEY_UP:
 	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 1);
 	break;
-	
+
 	//cursor down
       case KEY_DOWN:
 	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 2);
-	break;	
+	break;
 
 	//cursor left
       case KEY_LEFT:

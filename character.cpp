@@ -13,7 +13,7 @@ Character::Character()
 {
 	yAxis = 1;
 	xAxis = 1;
-	energy = 100;
+	energy = 102;
 	whiffles = 1000;
 	binoculars = false;
 	boat = false;
