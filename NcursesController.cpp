@@ -143,6 +143,7 @@ int NcursesController::checkMove(int xaxis, int yaxis, char map[128][128], bool 
       break;
     case 'w':
       good = 0;
+      hero.spendEnergy(1);
       break;
     case 'b':
       if(boat)
@@ -315,7 +316,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
   mvprintw(16, COLS-28, "hero y: %d  Hero x: %d", hero.yAxis, hero.xAxis);
 
   // set cursor to hero
-  move(LINES/2, (COLS-30)/2);
+  move((LINES/2)-1, ((COLS-30)/2)-1);
 }
 
 
@@ -323,10 +324,10 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
 int NcursesController::checkCursorMove(int cursor_x, int cursor_y)
 {
 	int good = 1;
-	
+
 	if(cursor_x < 0 || cursor_x > COLS-30 || cursor_y < 0 || cursor_y > LINES)
     		return 0;
-	
+
 	return good;
 }
 
@@ -335,11 +336,10 @@ int NcursesController::checkCursorMove(int cursor_x, int cursor_y)
 void NcursesController::move_cursor(char map[128][128], int discovered[128][128], int keypress)
 {
   curs_set(1);
-  
+
   int cursor_y, cursor_x;
 
   getyx(stdscr, cursor_y, cursor_x);
-
   switch(keypress) {
 
       case 1:
@@ -349,14 +349,14 @@ void NcursesController::move_cursor(char map[128][128], int discovered[128][128]
 	}
 
 	break;
-	
+
       case 2:
 	if(checkCursorMove(cursor_x, cursor_y))
 	{
 		++cursor_y;
 	}
 
-	break;	
+	break;
 
       case 3:
 	if(checkCursorMove(cursor_x, cursor_y))
@@ -377,7 +377,7 @@ void NcursesController::move_cursor(char map[128][128], int discovered[128][128]
       default:
 	break;
   }
-  
+
   wmove(stdscr, cursor_y, cursor_x);
   refresh();
 }
