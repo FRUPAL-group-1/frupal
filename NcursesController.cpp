@@ -26,104 +26,104 @@ NcursesController::~NcursesController()
 
 void NcursesController::discover(int herox, int heroy, int discovered[128][128], bool binocular)
 {
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   herox++;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   heroy++;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   herox--;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   herox--;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   heroy--;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   heroy--;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   herox++;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   herox++;
-  if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+  if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
     discovered[heroy][herox] = 1;
   }
   if(binocular) {
     herox++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     heroy++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     heroy++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     heroy++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     heroy--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     heroy--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     heroy--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     heroy--;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
     herox++;
-    if(herox <= 127 || herox >= 0 || heroy <= 127 || heroy >= 0){
+    if(herox <= 127 && herox >= 0 && heroy <= 127 && heroy >= 0){
       discovered[heroy][herox] = 1;
     }
   }
@@ -273,7 +273,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       {
         xaxis--;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-	hero.spendEnergy(1);
+        hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;
@@ -283,7 +283,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       {
         yaxis++;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-	hero.spendEnergy(1);
+        hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;
@@ -293,7 +293,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       {
         yaxis--;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-	hero.spendEnergy(1);
+        hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;
@@ -303,7 +303,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       {
         xaxis++;
         displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
-	hero.spendEnergy(1);
+        hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
       break;
@@ -321,61 +321,73 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
 
 
 // This function checks to make sure the cursor is not out-of-bounds
-int NcursesController::checkCursorMove(int cursor_x, int cursor_y)
+int NcursesController::checkCursorMove(int cursor_x, int cursor_y, int herocursor_y, int herocursor_x, int discovered[128][128])
 {
-	int good = 1;
+  int good = 1;
 
-	if(cursor_x < 0 || cursor_x > COLS-30 || cursor_y < 0 || cursor_y > LINES)
-    		return 0;
+  if(cursor_x < 0 || cursor_x > COLS-30 || cursor_y < 0 || cursor_y > LINES) //checks screen bounds
+    return 0;
+  if(herocursor_x > 127 || herocursor_x < 0 || herocursor_y > 127 || herocursor_y < 0) //checks map bounds
+    return 0;
+  if(!(discovered[herocursor_y][herocursor_x]))
+    return 0;
 
-	return good;
+  return good;
 }
 
 
 // This function moves the cursor, not the hero
-void NcursesController::move_cursor(char map[128][128], int discovered[128][128], int keypress)
+void NcursesController::move_cursor(char map[128][128], int discovered[128][128], int keypress, Character &hero)
 {
   curs_set(1);
 
   int cursor_y, cursor_x;
+  int herocursor_y, herocursor_x;
+
+  herocursor_y = hero.yAxis;
+  herocursor_x = hero.xAxis;
 
   getyx(stdscr, cursor_y, cursor_x);
   switch(keypress) {
 
-      case 1:
-	if(checkCursorMove(cursor_x, cursor_y))
-	{
-		--cursor_y;
-	}
+    case 1:
+      if(checkCursorMove(cursor_x, cursor_y, herocursor_y-1, herocursor_x, discovered))
+      {
+        --cursor_y;
+        --herocursor_y;
+      }
 
-	break;
+      break;
 
-      case 2:
-	if(checkCursorMove(cursor_x, cursor_y))
-	{
-		++cursor_y;
-	}
+    case 2:
+      if(checkCursorMove(cursor_x, cursor_y, herocursor_y+1, herocursor_x, discovered))
+      {
+        ++cursor_y;
+        ++herocursor_y;
+      }
 
-	break;
+      break;
 
-      case 3:
-	if(checkCursorMove(cursor_x, cursor_y))
-	{
-		--cursor_x;
-	}
+    case 3:
+      if(checkCursorMove(cursor_x, cursor_y, herocursor_y, herocursor_x-1, discovered))
+      {
+        --cursor_x;
+        --herocursor_x;
+      }
 
-	break;
+      break;
 
-      case 4:
-	if(checkCursorMove(cursor_x, cursor_y))
-	{
-		++cursor_x;
-	}
+    case 4:
+      if(checkCursorMove(cursor_x, cursor_y, herocursor_y, herocursor_x+1, discovered))
+      {
+        ++cursor_x;
+        ++herocursor_x;
+      }
 
-	break;
+      break;
 
-      default:
-	break;
+    default:
+      break;
   }
 
   wmove(stdscr, cursor_y, cursor_x);
