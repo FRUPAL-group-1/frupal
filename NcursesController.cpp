@@ -321,67 +321,73 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
 
 
 // This function checks to make sure the cursor is not out-of-bounds
-int NcursesController::checkCursorMove(int cursor_x, int cursor_y, int herocursor_y, int herocursor_x, int discovered[128][128])
+int NcursesController::checkCursorMove(int cursor_x, int cursor_y, int herocursory, int herocursorx, int discovered[128][128])
 {
   int good = 1;
 
-  if(cursor_x < 0 || cursor_x > COLS-30 || cursor_y < 0 || cursor_y > LINES) //checks screen bounds
+  if(cursor_x < 0 || cursor_x > COLS-30 || cursor_y < 0 || cursor_y > LINES-1) //checks screen bounds
+  {
+    mvprintw(20, COLS-28, "test fail");
     return 0;
-  if(herocursor_x > 127 || herocursor_x < 0 || herocursor_y > 127 || herocursor_y < 0) //checks map bounds
+  }
+  if(herocursorx < 0 || herocursorx > 127 || herocursory < 0 || herocursory > 127) //checks map bounds
+  {
+    mvprintw(20, COLS-28, "test fail");
     return 0;
-  if(!(discovered[herocursor_y][herocursor_x]))
+  }
+  if(!(discovered[herocursory][herocursorx]))
+  {
+    mvprintw(20, COLS-28, "test fail");
     return 0;
+  }
 
+  mvprintw(20, COLS-28, "passed test");
   return good;
 }
 
 
 // This function moves the cursor, not the hero
-void NcursesController::move_cursor(char map[128][128], int discovered[128][128], int keypress, Character &hero)
+void NcursesController::move_cursor(char map[128][128], int discovered[128][128], int keypress, int& herocursorx, int& herocursory)
 {
   curs_set(1);
 
   int cursor_y, cursor_x;
-  int herocursor_y, herocursor_x;
-
-  herocursor_y = hero.yAxis;
-  herocursor_x = hero.xAxis;
-
   getyx(stdscr, cursor_y, cursor_x);
+
   switch(keypress) {
 
     case 1:
-      if(checkCursorMove(cursor_x, cursor_y, herocursor_y-1, herocursor_x, discovered))
+      if(checkCursorMove(cursor_x, cursor_y-1, herocursory-1, herocursorx, discovered))
       {
-        --cursor_y;
-        --herocursor_y;
+        cursor_y--;
+        herocursory--;
       }
 
       break;
 
     case 2:
-      if(checkCursorMove(cursor_x, cursor_y, herocursor_y+1, herocursor_x, discovered))
+      if(checkCursorMove(cursor_x, cursor_y+1, herocursory+1, herocursorx, discovered))
       {
-        ++cursor_y;
-        ++herocursor_y;
+        cursor_y++;
+        herocursory++;
       }
 
       break;
 
     case 3:
-      if(checkCursorMove(cursor_x, cursor_y, herocursor_y, herocursor_x-1, discovered))
+      if(checkCursorMove(cursor_x-1, cursor_y, herocursory, herocursorx-1, discovered))
       {
-        --cursor_x;
-        --herocursor_x;
+        cursor_x--;
+        herocursorx--;
       }
 
       break;
 
     case 4:
-      if(checkCursorMove(cursor_x, cursor_y, herocursor_y, herocursor_x+1, discovered))
+      if(checkCursorMove(cursor_x+1, cursor_y, herocursory, herocursorx+1, discovered))
       {
-        ++cursor_x;
-        ++herocursor_x;
+        cursor_x++;
+        herocursorx++;
       }
 
       break;
@@ -390,6 +396,7 @@ void NcursesController::move_cursor(char map[128][128], int discovered[128][128]
       break;
   }
 
+  mvprintw(18, COLS-28, "cursor y: %d  cursor x: %d", herocursory, herocursorx);
   wmove(stdscr, cursor_y, cursor_x);
   refresh();
 }
