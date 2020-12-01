@@ -50,26 +50,30 @@ bool GameController::update()
 
 	//cursor up
       case KEY_UP:
-	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 1);
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 1, hero);
 	break;
 
 	//cursor down
       case KEY_DOWN:
-	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 2);
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 2, hero);
 	break;
 
 	//cursor left
       case KEY_LEFT:
-	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 3);
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 3, hero);
 	break;
 
 	//cursor right
       case KEY_RIGHT:
-	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 4);
+	ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 4, hero);
 	break;
 
       default:
         break;
+    }
+    if(hero.energy <= 0) //end game at 0 energy
+    {
+      return 0;
     }
 
   }
