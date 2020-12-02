@@ -9,25 +9,21 @@
 
 Grovnick::Grovnick()
 {
-	key = "";
 	y_axis = 0;
 	x_axis = 0;
 	cost = 0;
 	type = 0;
-	//what to do for char sign?
 	name = "";
 }
 
 
-Grovnick::Grovnick(string ky, int y, int x, int cst, int tpe, char sgn, string nme)
+Grovnick::Grovnick(int y, int x, int cst, int tpe, string nme)
 {
-	key.assign(ky);
 	y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;
-	sign = sgn;
-	name.assign(nme);
+	name = nme;
 }
 
 
@@ -68,15 +64,13 @@ Food::Food() //initialization list in constructor?
 }
 
 
-Food::Food(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int rstre, bool consumed)
+Food::Food(int y, int x, int cst, int tpe, string nme, int rstre, bool consumed)
 {
-	key.assign(ky);
 	y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;		//maybe should just set it to 1 for food instead? Similar for other classes?
-	sign = sgn;
-	name.assign(nme);
+	name = nme;
 	//considered using initialization list but it would be so huge! maybe still do it?
 	restore = rstre;
 	is_consumed = consumed;
@@ -96,15 +90,13 @@ Obstacle::Obstacle()
 }
 
 
-Obstacle::Obstacle(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int obs_tpe)
+Obstacle::Obstacle(int y, int x, int cst, int tpe, string nme, int obs_tpe)
 {
-	key.assign(ky);
 	y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;
-	sign = sgn;
-	name.assign(nme);
+	name = nme;
 	//initialization list instead?
 	obs_type = obs_tpe;
 }
@@ -123,15 +115,13 @@ Tool::Tool()
 }
 
 
-Tool::Tool(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int tl_type, int effectiveness)
+Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiveness)
 {
-	key.assign(ky);
 	y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;
-	sign = sgn;
-	name.assign(nme);
+	name = nme;
 	//initialization list instead?
 	tool_type = tl_type;
 	item_effectiveness = effectiveness;	
@@ -160,15 +150,13 @@ Royal_Diamond::Royal_Diamond()
 }
 
 
-Royal_Diamond::Royal_Diamond(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int prize)
+Royal_Diamond::Royal_Diamond(int y, int x, int cst, int tpe, string nme, int prize)
 {
-	key.assign(ky);
 	y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;
-	sign = sgn;
-	name.assign(nme);
+	name = nme;
 	//initialization list instead?
 	grand_prize = prize;
 }
@@ -188,18 +176,17 @@ Clue::Clue()
 }
 
 
-Clue::Clue(string ky, int y, int x, int cst, int tpe, char sgn, string nme, string clu, bool truth)
+Clue::Clue(int y, int x, int cst, int tpe, string nme, string clu, bool truth)
 {
-	key.assign(ky);
 	y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;
 	sign = sgn;
-	name.assign(nme);
+	name = nme;
 	//initialization list instead?
-	clue.assign(clu);
-	truthful = truth;
+	clue = clu;
+	is_truthful = truth;
 }
 
 
@@ -216,15 +203,13 @@ Treasure::Treasure()
 }
 
 
-Treasure::Treasure(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int prize)
+Treasure::Treasure(int y, int x, int cst, int tpe, string nme, int prize)
 {
-	key.assign(ky);
 	y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;
-	sign = sgn;
-	name.assign(nme);
+	name = nme;
 	//initialization list instead?
 	treasure = prize;
 }
