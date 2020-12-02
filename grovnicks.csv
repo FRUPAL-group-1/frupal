@@ -1,1 +1,3 @@
- 
+example-> type, x, y, cost, name, ... specific stuff for each object
+food,1,1,1,kebab,10,false
+treasure,2,3,0,treasure chest,1000
