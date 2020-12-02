@@ -22,18 +22,18 @@ class Grovnick
 {
 	public:
 		Grovnick();
-		Grovnick(string ky, int y, int x, int cst, int tpe, char sgn, string nme);
+		Grovnick(int y, int x, int cst, int tpe, string nme);
 		~Grovnick();
 		void display_on();
 		bool is_match(int x, int y);
 
 	protected:
-		string key;	//not sure what this is?
+		//string key;	//not sure what this is?
 		int y_axis;
 		int x_axis;
 		int cost;
 		int type;
-		char sign;
+		//char sign;
 		string name;
 
 		//other functions and variables?
@@ -43,7 +43,7 @@ class Food: public Grovnick
 {
 	public:
 		Food();
-		Food(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int rstre, bool consumed);
+		Food(int y, int x, int cst, int tpe, string nme, int rstre, bool consumed);
 		~Food();
 		int restore;
 		bool is_consumed;
@@ -54,7 +54,7 @@ class Obstacle: public Grovnick
 {
 	public:
 		Obstacle();
-		Obstacle(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int obs_tpe);
+		Obstacle(int y, int x, int cst, int tpe, string nme, int obs_tpe);
 		~Obstacle();
 		int obs_type;	//how many ints? different than grovnick::type?
 		//obs_type == 1 for tree, 2 for boulder
@@ -64,7 +64,7 @@ class Tool: public Grovnick
 {
 	public:
 		Tool();
-		Tool(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int tl_tpe, int effectiveness);
+		Tool(int y, int x, int cst, int tpe, string nme, int tl_tpe, int effectiveness);
 		~Tool();
 		bool type_match(Obstacle);
 		int tool_type;  //different than grovnick::type?
@@ -77,7 +77,7 @@ class Royal_Diamond: public Grovnick
 {
 	public:
 		Royal_Diamond();	
-		Royal_Diamond(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int prize);
+		Royal_Diamond(int y, int x, int cst, int tpe, string nme, int prize);
 		~Royal_Diamond();
 
 		int grand_prize; 
@@ -89,18 +89,18 @@ class Clue: public Grovnick
 {
 	public:
 		Clue();
-		Clue(string ky, int y, int x, int cst, int tpe, char sgn, string nme, string clu, bool truth);
+		Clue(int y, int x, int cst, int tpe, string nme, string clu, bool truth);
 		~Clue();
 
 		string clue;
-		bool truthful;
+		bool is_truthful;
 };
 
 class Treasure: public Grovnick
 {
 	public:
 		Treasure();
-		Treasure(string ky, int y, int x, int cst, int tpe, char sgn, string nme, int prize);
+		Treasure(int y, int x, int cst, int tpe, string nme, int prize);
 		~Treasure();
 	
 		int treasure;
