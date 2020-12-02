@@ -52,7 +52,7 @@ bool Map::editTile(char tileType, int x, int y)
 
 // csv format
 // type, x, y, cost, name :: additional fields specific to type
-/*
+
 int Map::initializeGrovnicks()
 {
 
@@ -71,44 +71,72 @@ int Map::initializeGrovnicks()
       values.push_back(cell);
     }
 
-    switch(values[0]) {
+    string type = values[0];
+    int x = s_toi(values[1]);
+    int y = s_toi(values[2]);
+    int cst = s_toi(values[3]);
+    string name = values[4];
+
+    switch(type) {
       case "food":
-        // code block
-        int y = s_toi(values[2]);
-        int x = s_toi(values[1]);
-        int cst = s_toi(values[3]);
         int rstre = s_toi(values[5]);
 
-        Grovnick * ptr = new Food(y, x, cst, 1, values[4], rstre, false);
-
-        map[x][y] = ptr;
+        Grovnick * ptr = new Food(y, x, cst, 1, name, rstre, false);
+        setGrovnick(ptr, x, y);
 
         break;
       case "obstacle":
-        // code block
-        break;
-      case "obstacle":
-        // code block
+        int obs_type = s_toi(values[5]);
+
+        Grovnick * ptr = new Obstacle(y, x, cst, 2, name, obs_type);
+        setGrovnick(ptr, x, y);
+
         break;
       case "tool":
         // code block
+        int tool_type = s_toi(values[5]);
+        int efectivness = s_toi(values[6]);
+
+        Grovnick * ptr = new Tool(y, x, cst, 3, name, tool_type, effectiveness);
+        setGrovnick(ptr, x, y);
+
         break;
       case "royal_diamond":
-        // code block
+        int prize = s_toi(values[5]);
+
+        Grovnick * ptr = new Royal_Diamond(y, x, cst, 4, name, prize);
+        setGrovnick(ptr, x, y);
+
         break;
       case "clue":
-        // code block
+        string clue = values[5];
+        bool truth = values[6] == "true";
+
+        Grovnick * ptr = new Clue(y, x, cst, 5, name, clue, truth);
+        setGrovnick(ptr, x, y);
+        
         break;
       case "treasure":
-        // code block
+        int prize = s_toi(values[5]);
+
+        Grovnick * ptr = new Treasure(y, x, cst, 6, name, prize);
+        setGrovnick(ptr, x, y);
+
         break;
-      default:
-        // skip
+      default: // skip
     }
 
   }
 
 }
-*/
+
+void Map::setGrovnick(Grovnick * ptr, int x, int y)
+{
+  if(grovnicks[x][y] == NULL) {
+    map[x][y] = ptr;
+  }
+  // else ...
+}
+
 
 #endif //MAP_CPP
