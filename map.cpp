@@ -60,17 +60,18 @@ int Map::initializeGrovnicks()
   in.open("grovnicks.csv");
 
   while (in.good()){
-    string row, cell;
+    string row;
     vector<string> values;
 
     getline (in, row);
     stringstream s(row);
 
     while(s.good()) {
+      string cell;
       getline(s, cell, ',');
       values.push_back(cell);
     }
-
+    
     int type = stoi(values[0]);
     int x = stoi(values[1]);
     int y = stoi(values[2]);
@@ -80,18 +81,18 @@ int Map::initializeGrovnicks()
     switch(type) {
       case 1:
       {
-        int rstre = stoi(values[5]);
+        int restore = stoi(values[5]);
 
-        Grovnick * foodPtr = new Food(y, x, cst, 1, name, rstre, false);
+        Grovnick * foodPtr = new Food(y, x, cst, 1, name, restore, false);
         setGrovnick(foodPtr, x, y);
-      }
+      } break;
       case 2:
       {
         int obs_type = stoi(values[5]);
 
         Grovnick * obstaclePtr = new Obstacle(y, x, cst, 2, name, obs_type);
         setGrovnick(obstaclePtr, x, y);
-      }
+      } break;
       case 3:
       {
         int tool_type = stoi(values[5]);
@@ -99,14 +100,14 @@ int Map::initializeGrovnicks()
 
         Grovnick * toolPtr = new Tool(y, x, cst, 3, name, tool_type, effectiveness);
         setGrovnick(toolPtr, x, y);
-      }
+      } break;
       case 4:
       {
         int prize = stoi(values[5]);
 
         Grovnick * royalDiamondPtr = new Royal_Diamond(y, x, cst, 4, name, prize);
         setGrovnick(royalDiamondPtr, x, y);
-      }
+      } break;
       case 5:
       {
         string clue = values[5];
@@ -114,15 +115,16 @@ int Map::initializeGrovnicks()
 
         Grovnick * cluePtr = new Clue(y, x, cst, 5, name, clue, truth);
         setGrovnick(cluePtr, x, y);
-      }
+      } break;
       case 6:
       {
         int prize2 = stoi(values[5]);
 
         Grovnick * treasurePtr = new Treasure(y, x, cst, 6, name, prize2);
         setGrovnick(treasurePtr, x, y);
-      }
+      } break;
     }
+    
 
   }
 
