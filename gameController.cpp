@@ -97,6 +97,7 @@ bool GameController::update()
 bool GameController::loadMap()
 {
   currentMap.initializeMap();
+  currentMap.initializeGrovnicks();
   return true;
 }
 
