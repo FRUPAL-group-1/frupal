@@ -60,80 +60,81 @@ int Map::initializeGrovnicks()
   in.open("grovnicks.csv");
 
   while (in.good()){
-    string line, cell, type;
-    std::vector<string> values;
+    string row, cell;
+    vector<string> values;
 
-    getline (in, line);
-    stringstream s(line);
+    getline (in, row);
+    stringstream s(row);
 
     while(s.good()) {
-      getline(s, col, ',');
+      getline(s, cell, ',');
       values.push_back(cell);
     }
 
-    string type = values[0];
-    int x = s_toi(values[1]);
-    int y = s_toi(values[2]);
-    int cst = s_toi(values[3]);
+    int type = stoi(values[0]);
+    int x = stoi(values[1]);
+    int y = stoi(values[2]);
+    int cst = stoi(values[3]);
     string name = values[4];
 
     switch(type) {
-      case "food":
-        int rstre = s_toi(values[5]);
+      case 1:
+      {
+        int rstre = stoi(values[5]);
 
-        Grovnick * ptr = new Food(y, x, cst, 1, name, rstre, false);
-        setGrovnick(ptr, x, y);
+        Grovnick * foodPtr = new Food(y, x, cst, 1, name, rstre, false);
+        setGrovnick(foodPtr, x, y);
+      }
+      case 2:
+      {
+        int obs_type = stoi(values[5]);
 
-        break;
-      case "obstacle":
-        int obs_type = s_toi(values[5]);
+        Grovnick * obstaclePtr = new Obstacle(y, x, cst, 2, name, obs_type);
+        setGrovnick(obstaclePtr, x, y);
+      }
+      case 3:
+      {
+        int tool_type = stoi(values[5]);
+        int effectiveness = stoi(values[6]);
 
-        Grovnick * ptr = new Obstacle(y, x, cst, 2, name, obs_type);
-        setGrovnick(ptr, x, y);
+        Grovnick * toolPtr = new Tool(y, x, cst, 3, name, tool_type, effectiveness);
+        setGrovnick(toolPtr, x, y);
+      }
+      case 4:
+      {
+        int prize = stoi(values[5]);
 
-        break;
-      case "tool":
-        // code block
-        int tool_type = s_toi(values[5]);
-        int efectivness = s_toi(values[6]);
-
-        Grovnick * ptr = new Tool(y, x, cst, 3, name, tool_type, effectiveness);
-        setGrovnick(ptr, x, y);
-
-        break;
-      case "royal_diamond":
-        int prize = s_toi(values[5]);
-
-        Grovnick * ptr = new Royal_Diamond(y, x, cst, 4, name, prize);
-        setGrovnick(ptr, x, y);
-
-        break;
-      case "clue":
+        Grovnick * royalDiamondPtr = new Royal_Diamond(y, x, cst, 4, name, prize);
+        setGrovnick(royalDiamondPtr, x, y);
+      }
+      case 5:
+      {
         string clue = values[5];
         bool truth = values[6] == "true";
 
-        Grovnick * ptr = new Clue(y, x, cst, 5, name, clue, truth);
-        setGrovnick(ptr, x, y);
-        
-        break;
-      case "treasure":
-        int prize = s_toi(values[5]);
+        Grovnick * cluePtr = new Clue(y, x, cst, 5, name, clue, truth);
+        setGrovnick(cluePtr, x, y);
+      }
+      case 6:
+      {
+        int prize2 = stoi(values[5]);
 
-        Grovnick * ptr = new Treasure(y, x, cst, 6, name, prize);
-        setGrovnick(ptr, x, y);
-
-        break;
-      default: // skip
+        Grovnick * treasurePtr = new Treasure(y, x, cst, 6, name, prize2);
+        setGrovnick(treasurePtr, x, y);
+      }
     }
 
   }
+
+  in.close();
+  return 1;
 
 }
 
 void Map::setGrovnick(Grovnick * ptr, int x, int y)
 {
   if(grovnicks[x][y] == NULL) {
-    map[x][y] = ptr;
+    grovnicks[x][y] = ptr;
   }
   // else ...
 }

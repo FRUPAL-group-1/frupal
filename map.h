@@ -2,6 +2,9 @@
 #include "grovnick.h"
 #include <fstream>
 #include <string>
+#include <vector>
+#include <string>
+#include <sstream>
 
 class Map
 {
