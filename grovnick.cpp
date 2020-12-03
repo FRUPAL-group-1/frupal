@@ -172,7 +172,7 @@ Clue::Clue()
 {
 	//again, same concerns here about initialization list
 	clue = "";
-	truthful = false;
+	is_truthful = false;
 }
 
 
@@ -182,7 +182,6 @@ Clue::Clue(int y, int x, int cst, int tpe, string nme, string clu, bool truth)
 	x_axis = x;
 	cost = cst;
 	type = tpe;
-	sign = sgn;
 	name = nme;
 	//initialization list instead?
 	clue = clu;
