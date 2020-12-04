@@ -27,13 +27,10 @@ class Grovnick
 		void display_on();
 		bool is_match(int x, int y);
 
-	protected:
-		//string key;	//not sure what this is?
 		int y_axis;
 		int x_axis;
 		int cost;
 		int type;
-		//char sign;
 		string name;
 
 		//other functions and variables?
@@ -76,11 +73,11 @@ class Tool: public Grovnick
 class Royal_Diamond: public Grovnick
 {
 	public:
-		Royal_Diamond();	
+		Royal_Diamond();
 		Royal_Diamond(int y, int x, int cst, int tpe, string nme, int prize);
 		~Royal_Diamond();
 
-		int grand_prize; 
+		int grand_prize;
 
 
 };
@@ -102,7 +99,7 @@ class Treasure: public Grovnick
 		Treasure();
 		Treasure(int y, int x, int cst, int tpe, string nme, int prize);
 		~Treasure();
-	
+
 		int treasure;
 };
 #endif //GROVNICK

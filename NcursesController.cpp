@@ -168,7 +168,7 @@ void NcursesController::initializeColor() //set up the color pairs for the progr
 
 
 //displays the current map frame, with the hero centered
-void NcursesController::displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128], bool binocular)
+void NcursesController::displayFrame(char map[128][128], int herox, int heroy, int discovered[128][128], bool binocular, Grovnick * grovnicks[128][128])
 {
   erase(); //clear screen to prevent out of bounds
   discover(herox,heroy,discovered,binocular);
@@ -206,28 +206,32 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
         case 'm':
           if(discovered[y][x]){
             attron(COLOR_PAIR(MEADOW_PAIR));
-            mvaddch(printy,printx,' ');
+            if(!displaygrovnick(y,x,printy,printx,grovnicks))
+              mvaddch(printy,printx,' ');
             attroff(COLOR_PAIR(MEADOW_PAIR));
           }
           break;
         case 'w':
           if(discovered[y][x]){
             attron(COLOR_PAIR(WALL_PAIR));
-            mvaddch(printy,printx,' ');
+            if(!displaygrovnick(y,x,printy,printx,grovnicks))
+              mvaddch(printy,printx,' ');
             attroff(COLOR_PAIR(WALL_PAIR));
           }
           break;
         case 's':
           if(discovered[y][x]){
             attron(COLOR_PAIR(SWAMP_PAIR));
-            mvaddch(printy,printx,' ');
+            if(!displaygrovnick(y,x,printy,printx,grovnicks))
+              mvaddch(printy,printx,' ');
             attroff(COLOR_PAIR(SWAMP_PAIR));
           }
           break;
         case 'b':
           if(discovered[y][x]){
             attron(COLOR_PAIR(WATER_PAIR));
-            mvaddch(printy,printx,' ');
+            if(!displaygrovnick(y,x,printy,printx,grovnicks))
+              mvaddch(printy,printx,' ');
             attroff(COLOR_PAIR(WATER_PAIR));
           }
           break;
@@ -241,6 +245,43 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
   mvaddch(hero_yspot-1,hero_xspot-1,'@');
   attroff(COLOR_PAIR(HERO_PAIR));
   refresh();
+}
+
+bool NcursesController::displaygrovnick(int y, int x, int printy, int printx, Grovnick * grovnicks[128][128])
+{
+  if(grovnicks[y][x] != NULL)
+  {
+    Grovnick * current = grovnicks[y][x];
+    switch(current->type){
+      case 1: //food
+        mvaddch(printy,printx,'F');
+        return true;
+        break;
+      case 2: //obs
+        mvaddch(printy,printx,'!');
+        return true;
+        break;
+      case 3: //tool
+        mvaddch(printy,printx,'T');
+        return true;
+        break;
+      case 4:
+        mvaddch(printy,printx,'$');
+        return true;
+        break;
+      case 5:
+        mvaddch(printy,printx,'?');
+        return true;
+        break;
+      case 6:
+        mvaddch(printy,printx,'$');
+        return true;
+        break;
+    }
+  } else {
+  return false;
+  }
+  return false;
 }
 
 void NcursesController::displayMove(int whiffles, int energy)
@@ -258,7 +299,7 @@ void NcursesController::displayMove(int whiffles, int energy)
   mvprintw(LINES-2, leftbuffer, "Whiffles: %d", whiffles);
 }
 
-void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress)
+void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress, Grovnick * grovnicks[128][128])
 {
   curs_set(0);
   initializeColor();
@@ -272,7 +313,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       if(checkMove(xaxis-1, yaxis, map, hero.hasBoat(), hero))
       {
         xaxis--;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars(), grovnicks);
         hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
@@ -282,7 +323,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       if(checkMove(xaxis, yaxis+1, map, hero.hasBoat(), hero))
       {
         yaxis++;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars(), grovnicks);
         hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
@@ -292,7 +333,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       if(checkMove(xaxis, yaxis-1, map, hero.hasBoat(), hero))
       {
         yaxis--;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars(), grovnicks);
         hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }
@@ -302,7 +343,7 @@ void NcursesController::move_hero(char map[128][128], int discovered[128][128], 
       if(checkMove(xaxis+1, yaxis, map, hero.hasBoat(), hero))
       {
         xaxis++;
-        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars());
+        displayFrame(map, xaxis, yaxis, discovered, hero.hasBinoculars(), grovnicks);
         hero.spendEnergy(1);
         displayMove(hero.whiffles,hero.energy);
       }

@@ -19,8 +19,8 @@ bool GameController::update()
   int keypress = 5;  //declare once
   int cursorx; //keep track of cursor when hero moves
   int cursory; //keep track of cursor when hero moves
-  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
-  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1);
+  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
+  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
   cursorx = hero.xAxis; //give starting hero xvalue
   cursory = hero.yAxis; //give starting hero yvalue
 
@@ -30,28 +30,28 @@ bool GameController::update()
     {
       //case 1
       case 'a':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1);
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
         cursorx = hero.xAxis;
         cursory = hero.yAxis;
         break;
 
         //case 2
       case 's':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2);
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2, currentMap.grovnicks);
         cursorx = hero.xAxis;
         cursory = hero.yAxis;
         break;
 
         //case 3
       case 'w':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3);
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3, currentMap.grovnicks);
         cursorx = hero.xAxis;
         cursory = hero.yAxis;
         break;
 
         //case 4
       case 'd':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4);
+        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
         cursorx = hero.xAxis;
         cursory = hero.yAxis;
         break;
