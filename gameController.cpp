@@ -33,7 +33,7 @@ bool GameController::update()
 
         if(currentMap.grovnicks[hero.yAxis][hero.xAxis])
         {
-          hero.addItemToInventory(current
+          hero.addToolToInventory(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
         }
 
 

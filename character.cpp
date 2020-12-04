@@ -4,6 +4,7 @@
 //
 
 #include "character.h"
+#include "map.h"
 
 
 Character::Character()
@@ -84,21 +85,24 @@ bool Character::hasBinoculars()
   else return false;
 }
 
-bool Character::addToolToInventory(Map.Grovnicks[Character.yAxis][Character.xAxis])
+bool Character::addToolToInventory(*Map.Grovnicks[yAxis][xAxis])
 {
   int i = freeSpotInToolBag();
   if(i >= 0 && i < MAX_TOOLS) //check for valid range
   {
     //RTTI to get the backpack to hold the proper value;
-    Tool *tool = dynamic_cast<Tool>(Grovnick)(Map.grovnicks[Character.yAxis][Character.xAxis]);
+    Tool *tool = dynamic_cast<Tool>(Grovnick)(Map.grovnicks[yAxis][xAxis]);
     if(tool)
     {
       //set the toolbag to the tool
       toolbag = tool;
       //then get it off the map of grovnick, which should make it not display anymore... i think
       free(*Map.grovnicks[Character.yAxis][Character.xAxis]);
+
+      return true;
     }
   }
+  return false;
 }
 
 //returns the free index of the toolbag
