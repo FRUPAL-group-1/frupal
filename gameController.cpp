@@ -1,6 +1,3 @@
-#ifndef GAMECONT_CPP
-#define GAMECONT_CPP
-
 //impliments all of the gameController functions
 
 #include "gameController.h"
@@ -33,6 +30,13 @@ bool GameController::update()
         ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
         cursorx = hero.xAxis;
         cursory = hero.yAxis;
+
+        if(currentMap.grovnicks[hero.yAxis][hero.xAxis])
+        {
+          hero.addItemToInventory(current
+        }
+
+
         break;
 
         //case 2
@@ -100,6 +104,3 @@ bool GameController::loadMap()
   currentMap.initializeGrovnicks();
   return true;
 }
-
-#endif  //GAMECONT_CPP
-

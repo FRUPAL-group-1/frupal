@@ -1,3 +1,6 @@
+#ifndef GAMECONT
+#define GAMECONT
+
 //gameController class
 //Handles the overall game:
 //provides game name
@@ -22,3 +25,6 @@ class GameController
     bool loadMap();
     bool update();
 };
+
+
+#endif  //GAMECONT

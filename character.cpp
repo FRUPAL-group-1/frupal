@@ -1,6 +1,3 @@
-#ifndef CHAR_CPP
-#define CHAR_CPP
-
 // character.cpp
 //
 // This files contains the character class.
@@ -11,81 +8,106 @@
 
 Character::Character()
 {
-	yAxis = 1;
-	xAxis = 1;
-	energy = 102;
-	whiffles = 1000;
-	binoculars = false;
-	boat = false;
+  yAxis = 1;
+  xAxis = 1;
+  energy = 102;
+  whiffles = 1000;
+  binoculars = false;
+  boat = false;
 }
 
 
 Character::~Character()
 {
-
 }
 
 
 int Character::checkEnergy()
 {
-	return energy;
+  return energy;
 }
 
 
 void Character::addEnergy(int added)
 {
-	energy += added;
+  energy += added;
 }
 
 
 void Character::spendEnergy(int spent)
 {
-	energy -= spent;
+  energy -= spent;
 }
 
 
 int Character::checkWhiffles()
 {
-	return whiffles;
+  return whiffles;
 }
 
 
 void Character::addWhiffles(int added)
 {
-	whiffles += added;
+  whiffles += added;
 }
 
 
 void Character::spendWhiffles(int spent)
 {
-	whiffles -= spent;
+  whiffles -= spent;
 }
 
 void Character::gainBinoculars()
 {
-	binoculars = true;
+  binoculars = true;
 }
 
 
 void Character::gainBoat()
 {
-	boat = false;
+  boat = false;
 }
 
 
 bool Character::hasBoat()
 {
-	if (boat) return true;
+  if (boat) return true;
 
-	else return false;
+  else return false;
 }
 
 
 bool Character::hasBinoculars()
 {
-	if (binoculars) return true;
+  if (binoculars) return true;
 
-	else return false;
+  else return false;
 }
 
-#endif  //CHAR_CPP
+bool Character::addToolToInventory(Map.Grovnicks[Character.yAxis][Character.xAxis])
+{
+  int i = freeSpotInToolBag();
+  if(i >= 0 && i < MAX_TOOLS) //check for valid range
+  {
+    //RTTI to get the backpack to hold the proper value;
+    Tool *tool = dynamic_cast<Tool>(Grovnick)(Map.grovnicks[Character.yAxis][Character.xAxis]);
+    if(tool)
+    {
+      //set the toolbag to the tool
+      toolbag = tool;
+      //then get it off the map of grovnick, which should make it not display anymore... i think
+      free(*Map.grovnicks[Character.yAxis][Character.xAxis]);
+    }
+  }
+}
+
+//returns the free index of the toolbag
+int Character::freeSpotInToolBag()
+{
+  for(int i = 0; i < MAX_TOOLS; ++i)
+  {
+    if(!toolbag[i])
+      return i; //index to add the tool to
+  }
+  return -1;  //no room!
+}

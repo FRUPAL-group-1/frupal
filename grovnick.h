@@ -1,3 +1,6 @@
+#ifndef GROVNICK_H
+#define GROVNICK_H
+
 //CS300 Fall 2020
 //Group 1
 //grovnick.h
@@ -12,7 +15,7 @@
 	5 = Clue;
 	6 = Treasure Chest
 */
-#ifndef GROVNICK
+
 #include <iostream>
 #include <string.h>
 
@@ -26,6 +29,7 @@ class Grovnick
 		~Grovnick();
 		void display_on();
 		bool is_match(int x, int y);
+    virtual void addTools();
 
 		int y_axis;
 		int x_axis;
@@ -102,4 +106,5 @@ class Treasure: public Grovnick
 
 		int treasure;
 };
-#endif //GROVNICK
+
+#endif
