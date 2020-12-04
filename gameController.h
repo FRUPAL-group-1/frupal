@@ -6,7 +6,6 @@
 //loads in the csv mapdata
 
 #include "NcursesController.h"
-#include "map.h"
 
 using namespace std;
 
