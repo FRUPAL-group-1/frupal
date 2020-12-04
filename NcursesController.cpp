@@ -265,15 +265,17 @@ bool NcursesController::displaygrovnick(int y, int x, int printy, int printx, Gr
         mvaddch(printy,printx,'T');
         return true;
         break;
-      case 4:
+      case 4: //diamond
+        attron(COLOR_PAIR(DIAMOND_PAIR));
         mvaddch(printy,printx,'$');
+        attroff(COLOR_PAIR(DIAMOND_PAIR));
         return true;
         break;
-      case 5:
+      case 5: //clue
         mvaddch(printy,printx,'?');
         return true;
         break;
-      case 6:
+      case 6: //treasure
         mvaddch(printy,printx,'$');
         return true;
         break;
