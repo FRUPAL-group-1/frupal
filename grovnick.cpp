@@ -96,6 +96,7 @@ Obstacle::Obstacle(int y, int x, int cst, int tpe, string nme, int obs_tpe)
 	name = nme;
 	//initialization list instead?
 	obs_type = obs_tpe;
+
 }
 
 
@@ -133,7 +134,6 @@ Tool::~Tool()
 	//TODO fill
 }
 
-
 bool Tool::type_match(Obstacle to_check)
 {
 	if(tool_type == to_check.obs_type)
@@ -141,7 +141,6 @@ bool Tool::type_match(Obstacle to_check)
 	else
 		return false;
 }
-
 
 Royal_Diamond::Royal_Diamond()
 {
@@ -217,17 +216,4 @@ Treasure::Treasure(int y, int x, int cst, int tpe, string nme, int prize)
 Treasure::~Treasure()
 {
 	//TODO fill
-}
-
-Ship::Ship()
-{
-}
-Ship::~Ship()
-{
-}
-Binoculars::Binoculars()
-{
-}
-Binoculars::~Binoculars()
-{
 }
