@@ -74,6 +74,7 @@ bool GameController::update()
               hero.spendWhiffles(food->cost);
               currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
               ncursescontroller.displayMove(hero.whiffles, hero.energy);
+              move((LINES/2)-1, ((COLS-30)/2)-1);
               break;
               }
 
@@ -83,6 +84,7 @@ bool GameController::update()
               hero.addWhiffles(chest->treasure);
               currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
               ncursescontroller.displayMove(hero.whiffles, hero.energy);
+              move((LINES/2)-1, ((COLS-30)/2)-1);
               break;
               }
 
