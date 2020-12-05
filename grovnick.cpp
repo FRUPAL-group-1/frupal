@@ -112,13 +112,16 @@ Tool::Tool()
 }
 
 
-Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiveness)
+Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiveness):Grovnick(y,x,cst,tpe,nme)
 {
-	y_axis = y;
+  //Let the constructor for the default class take care of making the parent
+	/*
+  y_axis = y;
 	x_axis = x;
 	cost = cst;
 	type = tpe;
 	name = nme;
+  */
 	//initialization list instead?
 	tool_type = tl_type;
 	item_effectiveness = effectiveness;	

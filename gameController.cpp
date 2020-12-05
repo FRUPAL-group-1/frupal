@@ -91,6 +91,17 @@ bool GameController::update()
     //if true, then its a tool
     if( (currentMap.grovnicks[hero.yAxis][hero.xAxis])->type == 3 )
     {
+      Grovnick *current = currentMap.grovnicks[hero.yAxis][hero.xAxis];
+      Grovnick *toolptr = new Tool( current->y_axis, 
+                                    current->x_axis,
+                                    current->cost, 
+                                    current->type,
+                                    current->name,
+                                    current->tool_type,           //in the Tool derived class
+                                    current->item_effectiveness   //in the Tool derived class
+                                   );
+
+      hero.addToolToInventory(toolptr);
     }
 
   }
