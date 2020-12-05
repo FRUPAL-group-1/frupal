@@ -92,10 +92,12 @@ bool GameController::update()
     //if true, then its a tool
     if( (currentMap.grovnicks[hero.yAxis][hero.xAxis])->type == 3 )
     {
-      Grovnick *current = currentMap.grovnicks[hero.yAxis][hero.xAxis];
+      Tool *current = dynamic_cast<Tool *>(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
       
       //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
-      Grovnick *toolptr = new Tool( current->y_axis, 
+      //the Tool class makes a segfault on line 105, and then Grovnick says
+      //  tooltype and item_effectiveness does not exist in grovnick
+      Tool *toolptr = new Tool( current->y_axis, 
                                     current->x_axis,
                                     current->cost, 
                                     current->type,

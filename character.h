@@ -34,7 +34,7 @@ class Character
 		bool hasBinoculars();
     
     //functions pertaining to the toolbag
-    bool addToolToInventory(Grovnick *&item);
+    bool addToolToInventory(Tool *&item);
     int freeSpotInToolBag();
 	
 		int yAxis;
@@ -42,7 +42,7 @@ class Character
 		int energy;
 		int whiffles;
 
-    Grovnick *toolbag[MAX_TOOLS];
+    Tool *toolbag[MAX_TOOLS];
 
 	protected:
 

@@ -14,6 +14,10 @@ Character::Character()
   whiffles = 1000;
   binoculars = false;
   boat = false;
+  for(int i = 0; i < MAX_TOOLS; ++i)
+  {
+    toolbag[i] = NULL;
+  }
 }
 
 
@@ -86,7 +90,7 @@ bool Character::hasBinoculars()
 
 //the toolbag will only ever store tools.... so why typecasting?
 //takes in a pointer to the address of the item since memory is allocated outside the function
-bool Character::addToolToInventory(Grovnick *&item)
+bool Character::addToolToInventory(Tool *&item)
 {
   int i = freeSpotInToolBag();
   if(i >= 0 && i < MAX_TOOLS) //check for valid range
