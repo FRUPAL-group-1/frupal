@@ -89,6 +89,7 @@ bool GameController::update()
       return 0;
     }
 
+    //TODO: needs to be added to the switch case for keypress
     //if true, then its a tool
     if( (currentMap.grovnicks[hero.yAxis][hero.xAxis]) )
     {
@@ -108,6 +109,7 @@ bool GameController::update()
             current->item_effectiveness   //in the Tool derived class
             );
         hero.addToolToInventory(toolptr);
+        current = NULL;
       }
     }
 

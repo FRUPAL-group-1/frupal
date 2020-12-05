@@ -106,4 +106,17 @@ class Treasure: public Grovnick
 		int treasure;
 };
 
+class Ship:public Grovnick
+{
+  public:
+    Ship();
+    ~Ship();
+};
+class Binoculars:public Grovnick
+{
+  public:
+    Binoculars();
+    ~Binoculars();
+};
+
 #endif

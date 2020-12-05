@@ -218,3 +218,16 @@ Treasure::~Treasure()
 {
 	//TODO fill
 }
+
+Ship::Ship()
+{
+}
+Ship::~Ship()
+{
+}
+Binoculars::Binoculars()
+{
+}
+Binoculars::~Binoculars()
+{
+}
