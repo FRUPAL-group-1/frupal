@@ -31,10 +31,6 @@ bool GameController::update()
         cursorx = hero.xAxis;
         cursory = hero.yAxis;
 
-        if(currentMap.grovnicks[hero.yAxis][hero.xAxis])
-        {
-          hero.addToolToInventory(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
-        }
 
 
         break;
@@ -91,6 +87,10 @@ bool GameController::update()
     if(hero.energy <= 0) //end game at 0 energy
     {
       return 0;
+    }
+    //if true, then its a tool
+    if( (currentMap.grovnicks[hero.yAxis][hero.xAxis])->type == 3 )
+    {
     }
 
   }

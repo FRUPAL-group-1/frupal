@@ -10,6 +10,7 @@
 #include <ncurses.h>
 #include <string.h>
 #include "grovnick.h"
+#include "map.h"
 
 using namespace std;
 
@@ -33,7 +34,7 @@ class Character
 		bool hasBinoculars();
     
     //functions pertaining to the toolbag
-    bool addToolToInventory(Grovnick *item);
+    bool addToolToInventory(Grovnick *&item);
     int freeSpotInToolBag();
 	
 		int yAxis;

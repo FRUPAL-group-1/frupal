@@ -4,7 +4,6 @@
 //
 
 #include "character.h"
-#include "map.h"
 
 
 Character::Character()
@@ -85,22 +84,15 @@ bool Character::hasBinoculars()
   else return false;
 }
 
-bool Character::addToolToInventory(*Map.Grovnicks[yAxis][xAxis])
+//the toolbag will only ever store tools.... so why typecasting?
+//takes in a pointer to the address of the item since memory is allocated outside the function
+bool Character::addToolToInventory(Grovnick *&item)
 {
   int i = freeSpotInToolBag();
   if(i >= 0 && i < MAX_TOOLS) //check for valid range
   {
-    //RTTI to get the backpack to hold the proper value;
-    Tool *tool = dynamic_cast<Tool>(Grovnick)(Map.grovnicks[yAxis][xAxis]);
-    if(tool)
-    {
-      //set the toolbag to the tool
-      toolbag = tool;
-      //then get it off the map of grovnick, which should make it not display anymore... i think
-      free(*Map.grovnicks[Character.yAxis][Character.xAxis]);
-
-      return true;
-    }
+    toolbag[i] = item;
+    return true;
   }
   return false;
 }
