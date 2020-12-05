@@ -23,7 +23,8 @@ class Grovnick
 	public:
 		Grovnick();
 		Grovnick(int y, int x, int cst, int tpe, string nme);
-		~Grovnick();
+		//~Grovnick();
+		virtual ~Grovnick();
 		void display_on();
 		bool is_match(int x, int y);
 
