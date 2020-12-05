@@ -16,123 +16,146 @@ GameController::~GameController()
 
 bool GameController::update()
 {
-  int keypress = 5;  //declare once
-  int cursorx; //keep track of cursor when hero moves
-  int cursory; //keep track of cursor when hero moves
-  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
-  ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
-  cursorx = hero.xAxis; //give starting hero xvalue
-  cursory = hero.yAxis; //give starting hero yvalue
+	int keypress = 5;  //declare once
+	int cursorx; //keep track of cursor when hero moves
+	int cursory; //keep track of cursor when hero moves
+	int leftbuffer = COLS - 28;
+	ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
+	ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
+	cursorx = hero.xAxis; //give starting hero xvalue
+	cursory = hero.yAxis; //give starting hero yvalue
 
-  while(keypress != 0){
-    keypress = getch();
-    switch(keypress)
-    {
-      //case 1
-      case 'a':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
-        break;
+	while(keypress != 0){
+		keypress = getch();
+		switch(keypress)
+		{
+			//case 1
+			case 'a':
+				ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
+				cursorx = hero.xAxis;
+				cursory = hero.yAxis;
+				break;
 
-        //case 2
-      case 's':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
-        break;
+				//case 2
+			case 's':
+				ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2, currentMap.grovnicks);
+				cursorx = hero.xAxis;
+				cursory = hero.yAxis;
+				break;
 
-        //case 3
-      case 'w':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
-        break;
+				//case 3
+			case 'w':
+				ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3, currentMap.grovnicks);
+				cursorx = hero.xAxis;
+				cursory = hero.yAxis;
+				break;
 
-        //case 4
-      case 'd':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
-        break;
+				//case 4
+			case 'd':
+				ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
+				cursorx = hero.xAxis;
+				cursory = hero.yAxis;
+				break;
 
-        //quit
-      case 'q':
-        return 0;
-        break;
+				//quit
+			case 'q':
+				return 0;
+				break;
 
-      case 'x': //interact with object hero is over
-        if(currentMap.grovnicks[hero.yAxis][hero.xAxis])
-        {
-          Grovnick * current = currentMap.grovnicks[hero.yAxis][hero.xAxis];
+				//cursor up
+			case KEY_UP:
+				ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 1, cursorx, cursory);
+				break;
 
-          switch(current->type){
-            case 1: //food
-              {
-              Food * food = dynamic_cast<Food *>(current);
-              hero.addEnergy(food->restore);
-              hero.spendWhiffles(food->cost);
-              currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
-              ncursescontroller.displayMove(hero.whiffles, hero.energy);
-              move((LINES/2)-1, ((COLS-30)/2)-1);
-              break;
-              }
+				//cursor down
+			case KEY_DOWN:
+				ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 2, cursorx, cursory);
+				break;
 
-            case 6: //treasure chest
-              {
-              Treasure * chest = dynamic_cast<Treasure *>(current);
-              hero.addWhiffles(chest->treasure);
-              currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
-              ncursescontroller.displayMove(hero.whiffles, hero.energy);
-              move((LINES/2)-1, ((COLS-30)/2)-1);
-              break;
-              }
+				//cursor left
+			case KEY_LEFT:
+				ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 3, cursorx, cursory);
+				break;
 
-            default:
-              break;
-          }
-        }
-        break;
+				//cursor right
+			case KEY_RIGHT:
+				ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 4, cursorx, cursory);
+				break;
 
-        //cursor up
-      case KEY_UP:
-        ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 1, cursorx, cursory);
-        break;
+			default:
+				break;
+		}
+		if(hero.energy <= 0) //end game at 0 energy
+		{
+			return 0;
+		}
+		Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
+		if(temp)
+		{ 
+			//need to set up a loop for display discovered grovnicks? How to display only discovered grovnicks? use discovered[128][128] instead of grovnicks[][]?
+			Obstacle * obst = dynamic_cast<Obstacle *>(temp);
+			if(obst)
+			{
+				if(obst->obs_type == 1)
+					mvprintw(2, leftbuffer, " Obstacle: Tree");
+				else if(obst->obs_type == 2)
+					mvprintw(2, leftbuffer, " Obstacle: Boulder");
+				mvprintw(3, leftbuffer, " Cost: %d", obst->cost); 
+			}
 
-        //cursor down
-      case KEY_DOWN:
-        ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 2, cursorx, cursory);
-        break;
+			Tool * a_tool = dynamic_cast<Tool *>(temp);
+			if(a_tool)
+			{
+				mvprintw(2, leftbuffer, " Tool: %s", a_tool->name.data());
+				mvprintw(3, leftbuffer, " Cost: %d", a_tool->cost);
+				if(a_tool->tool_type == 1)
+					mvprintw(4, leftbuffer, " Type: Axe");
+				else if(a_tool->tool_type == 2)
+					mvprintw(4, leftbuffer, " Type: Hammer");
+				mvprintw(5, leftbuffer, " Effectiveness: %dX", a_tool->item_effectiveness);
+			}
 
-        //cursor left
-      case KEY_LEFT:
-        ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 3, cursorx, cursory);
-        break;
+			Food * a_food = dynamic_cast<Food *>(temp);
+			if(a_food)
+			{
+				mvprintw(2, leftbuffer, " Food: %s", a_food->name.data());
+				mvprintw(3, leftbuffer, " Cost: %d", a_food->cost);
+				mvprintw(4, leftbuffer, " Energy: %d", a_food->restore);
+			}
 
-        //cursor right
-      case KEY_RIGHT:
-        ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 4, cursorx, cursory);
-        break;
+			Treasure * trea = dynamic_cast<Treasure *>(temp);
+			if(trea)
+			{
+				mvprintw(2, leftbuffer, " TREASURE!");
+				mvprintw(3, leftbuffer, " Reward: %d", trea->treasure); 
+			}
 
-      default:
-        break;
-    }
-    if(hero.energy <= 0) //end game at 0 energy
-    {
-      return 0;
-    }
+			Royal_Diamond * royal = dynamic_cast<Royal_Diamond *>(temp);
+			if(royal)
+				mvprintw(2, leftbuffer, " Royal Diamond!!"); 
 
-  }
-  return 0;
+			Clue * a_clue = dynamic_cast<Clue *>(temp);
+			if(a_clue)
+				mvprintw(2, leftbuffer, " Clue: %s", a_clue->clue.data());
+			
+			Binoculars * binoc = dynamic_cast<Binoculars *>(temp);
+			if(binoc)
+				mvprintw(2, leftbuffer, " Binoculars!");
+			
+			Ship * a_ship = dynamic_cast<Ship *>(temp);
+			if(a_ship)
+				mvprintw(2, leftbuffer, " A ship!");
+		}
+	}
+	return 0;
 }
 
 
 bool GameController::loadMap()
 {
-  currentMap.initializeMap();
-  currentMap.initializeGrovnicks();
-  return true;
+	currentMap.initializeMap();
+	currentMap.initializeGrovnicks();
+	return true;
 }
 
 #endif  //GAMECONT_CPP
-
