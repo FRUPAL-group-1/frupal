@@ -61,6 +61,37 @@ bool GameController::update()
         return 0;
         break;
 
+      case 'x': //interact with object hero is over
+        if(currentMap.grovnicks[hero.yAxis][hero.xAxis])
+        {
+          Grovnick * current = currentMap.grovnicks[hero.yAxis][hero.xAxis];
+
+          switch(current->type){
+            case 1: //food
+              {
+              Food * food = dynamic_cast<Food *>(current);
+              hero.addEnergy(food->restore);
+              hero.spendWhiffles(food->cost);
+              currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+              ncursescontroller.displayMove(hero.whiffles, hero.energy);
+              break;
+              }
+
+            case 6: //treasure chest
+              {
+              Treasure * chest = dynamic_cast<Treasure *>(current);
+              hero.addWhiffles(chest->treasure);
+              currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+              ncursescontroller.displayMove(hero.whiffles, hero.energy);
+              break;
+              }
+
+            default:
+              break;
+          }
+        }
+        break;
+
         //cursor up
       case KEY_UP:
         ncursescontroller.move_cursor(currentMap.map, currentMap.discovered, 1, cursorx, cursory);
