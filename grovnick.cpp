@@ -111,7 +111,7 @@ Tool::Tool()
 	item_effectiveness = 0;	
 }
 
-
+//have the Tool constructor call onto the base class constructor
 Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiveness):Grovnick(y,x,cst,tpe,nme)
 {
   //Let the constructor for the default class take care of making the parent
