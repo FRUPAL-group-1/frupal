@@ -3,6 +3,8 @@
 //Displays map, character stats and options
 
 #include "NcursesController.h"
+#include <chrono>
+#include <thread>
 
 //default constructor
 NcursesController::NcursesController()
@@ -303,6 +305,14 @@ void NcursesController::displayMove(int whiffles, int energy)
 
   mvprintw(LINES-1, leftbuffer, "Energy: %d", energy);
   mvprintw(LINES-2, leftbuffer, "Whiffles: %d", whiffles);
+}
+
+void NcursesController::displayVictory()
+{
+	erase();
+	mvprintw(LINES/2, COLS/2, "YOU ARE VICTORIOUS!");
+	refresh();
+	this_thread::sleep_for(chrono::milliseconds(10000));	
 }
 
 void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress, Grovnick * grovnicks[128][128])
