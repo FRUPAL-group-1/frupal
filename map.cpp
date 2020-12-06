@@ -121,6 +121,16 @@ int Map::initializeGrovnicks()
         Grovnick * treasurePtr = new Treasure(y, x, cst, 6, name, prize2);
         setGrovnick(treasurePtr, x, y);
       } break;
+      case 7:
+      {
+        // Ship stuff
+
+      } break;
+      case 8:
+      {
+        // Binoculars stuff
+
+      } break;
     }
     
 
