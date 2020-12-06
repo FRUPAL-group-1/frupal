@@ -27,8 +27,8 @@ Use to create zip
 
 * `make zip`
 
-###Group Video
-*Link: 
+### Group Video
+* Link: 
 
 Keybind         | Control
 ----------------|--------
