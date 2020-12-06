@@ -61,7 +61,7 @@ bool GameController::update()
 			case 'q':
 				return 0;
 				break;
-				
+
 			case 'x': //interact with object hero is over
 				if(currentMap.grovnicks[hero.yAxis][hero.xAxis])
 				{
@@ -124,7 +124,7 @@ bool GameController::update()
 		}
 		Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
 		if(temp)
-		{ 
+		{
 			//need to set up a loop for display discovered grovnicks? How to display only discovered grovnicks? use discovered[128][128] instead of grovnicks[][]?
 			Obstacle * obst = dynamic_cast<Obstacle *>(temp);
 			if(obst)
@@ -133,7 +133,7 @@ bool GameController::update()
 					mvprintw(2, leftbuffer, " Obstacle: Tree");
 				else if(obst->obs_type == 2)
 					mvprintw(2, leftbuffer, " Obstacle: Boulder");
-				mvprintw(3, leftbuffer, " Cost: %d", obst->cost); 
+				mvprintw(3, leftbuffer, " Cost: %d", obst->cost);
 			}
 
 			Tool * a_tool = dynamic_cast<Tool *>(temp);
@@ -160,25 +160,26 @@ bool GameController::update()
 			if(trea)
 			{
 				mvprintw(2, leftbuffer, " TREASURE!");
-				mvprintw(3, leftbuffer, " Reward: %d", trea->treasure); 
+				mvprintw(3, leftbuffer, " Reward: %d", trea->treasure);
 			}
 
 			Royal_Diamond * royal = dynamic_cast<Royal_Diamond *>(temp);
 			if(royal)
-				mvprintw(2, leftbuffer, " Royal Diamond!!"); 
+				mvprintw(2, leftbuffer, " Royal Diamond!!");
 
 			Clue * a_clue = dynamic_cast<Clue *>(temp);
 			if(a_clue)
 				mvprintw(2, leftbuffer, " Clue: %s", a_clue->clue.data());
-			
+
 			Binoculars * binoc = dynamic_cast<Binoculars *>(temp);
 			if(binoc)
 				mvprintw(2, leftbuffer, " Binoculars!");
-			
+
 			Ship * a_ship = dynamic_cast<Ship *>(temp);
 			if(a_ship)
 				mvprintw(2, leftbuffer, " A ship!");
 		}
+
 	}
 	return 0;
 }
