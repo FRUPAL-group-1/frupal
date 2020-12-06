@@ -291,6 +291,7 @@ void NcursesController::displayMove(int whiffles, int energy)
   mvprintw(8, leftbuffer, "A: Move West");
   mvprintw(9, leftbuffer, "S: Move South");
   mvprintw(10, leftbuffer, "D: Move East");
+  mvprintw(12, leftbuffer, "X: Interact with Object");
 
 
 

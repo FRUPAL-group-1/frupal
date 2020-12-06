@@ -4,6 +4,7 @@
 //implementation for grovnick, tool, obstacle, food, royal diamond, clue, and treasure classes
 #include "grovnick.h"
 
+//default constructor
 Grovnick::Grovnick()
 {
 	y_axis = 0;
@@ -13,7 +14,7 @@ Grovnick::Grovnick()
 	name = "";
 }
 
-
+//constructor with arguments
 Grovnick::Grovnick(int y, int x, int cst, int tpe, string nme)
 {
 	y_axis = y;
@@ -23,27 +24,10 @@ Grovnick::Grovnick(int y, int x, int cst, int tpe, string nme)
 	name = nme;
 }
 
+//destructor
+Grovnick::~Grovnick(){}
 
-Grovnick::~Grovnick()
-{
-	//strings count as dynamic memory and need to be deleted? fill
-}
-
-
-void Grovnick::display_on()
-{
-	//unsure how this interacts with ncurses; discuss with team
-	if(type == 1)
-		cout << "Food: " << name << endl;
-	else if(type == 2)
-		cout << "Obstacle: " << name << endl;
-	else if(type == 3)
-		cout << "Tool: " << name << endl;
-	cout << "Price: " << cost << endl;
-	cout << "Type: " << type << endl;
-}
-
-
+//checks location match
 bool Grovnick::is_match(int x, int y)
 {
 	if(x_axis == x && y_axis == y)
@@ -52,63 +36,42 @@ bool Grovnick::is_match(int x, int y)
 		return false;
 }
 
-
-Food::Food() //initialization list in constructor?
+//default constructor
+Food::Food():Grovnick() 
 {
-	//TODO all the other stuff
 	restore = 0;
 	is_consumed = false;	
 }
 
-
-Food::Food(int y, int x, int cst, int tpe, string nme, int rstre, bool consumed)
+//constructor with arguments
+Food::Food(int y, int x, int cst, int tpe, string nme, int rstre, bool consumed):Grovnick(y, x, cst, tpe, nme)
 {
-	y_axis = y;
-	x_axis = x;
-	cost = cst;
-	type = tpe;		//maybe should just set it to 1 for food instead? Similar for other classes?
-	name = nme;
-	//considered using initialization list but it would be so huge! maybe still do it?
 	restore = rstre;
 	is_consumed = consumed;
 }
 
+//deconstructor
+Food::~Food(){}
 
-Food::~Food()
+//default constructor
+Obstacle::Obstacle():Grovnick()
 {
-	//TODO fill
-}
-
-
-Obstacle::Obstacle()
-{
-	//same concerns as food: initialization list or...?
 	obs_type = 0;
 }
 
-
-Obstacle::Obstacle(int y, int x, int cst, int tpe, string nme, int obs_tpe)
+//constructor with arguments
+Obstacle::Obstacle(int y, int x, int cst, int tpe, string nme, int obs_tpe):Grovnick(y, x, cst, tpe, nme)
 {
-	y_axis = y;
-	x_axis = x;
-	cost = cst;
-	type = tpe;
-	name = nme;
-	//initialization list instead?
 	obs_type = obs_tpe;
 
 }
 
+//deconstructor
+Obstacle::~Obstacle(){}
 
-Obstacle::~Obstacle()
+//default constructor
+Tool::Tool():Grovnick()
 {
-	//TODO fill
-}
-
-
-Tool::Tool()
-{
-	//again, same concerns here about initialization list
 	item_effectiveness = 0;	
 }
 
@@ -128,12 +91,10 @@ Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiv
 	item_effectiveness = effectiveness;	
 }
 
+//deconstructor
+Tool::~Tool(){}
 
-Tool::~Tool()
-{
-	//TODO fill
-}
-
+//check if tool and obstacle types match
 bool Tool::type_match(Obstacle to_check)
 {
 	if(tool_type == to_check.obs_type)
@@ -144,76 +105,65 @@ bool Tool::type_match(Obstacle to_check)
 
 Royal_Diamond::Royal_Diamond()
 {
-	//again, same concerns here about initialization list
 	grand_prize = 0;
 }
 
-
-Royal_Diamond::Royal_Diamond(int y, int x, int cst, int tpe, string nme, int prize)
+//constructor with arguments
+Royal_Diamond::Royal_Diamond(int y, int x, int cst, int tpe, string nme, int prize):Grovnick(y, x, cst, tpe, nme)
 {
-	y_axis = y;
-	x_axis = x;
-	cost = cst;
-	type = tpe;
-	name = nme;
-	//initialization list instead?
 	grand_prize = prize;
 }
 
-
-Royal_Diamond::~Royal_Diamond()
-{
-	//TODO fill
-}
+//deconstructor
+Royal_Diamond::~Royal_Diamond(){}
 		
-
-Clue::Clue()
+//default constructor
+Clue::Clue():Grovnick()
 {
-	//again, same concerns here about initialization list
 	clue = "";
 	is_truthful = false;
 }
 
-
-Clue::Clue(int y, int x, int cst, int tpe, string nme, string clu, bool truth)
+//constructor with arguments
+Clue::Clue(int y, int x, int cst, int tpe, string nme, string clu, bool truth):Grovnick(y, x, cst, tpe, nme)
 {
-	y_axis = y;
-	x_axis = x;
-	cost = cst;
-	type = tpe;
-	name = nme;
-	//initialization list instead?
 	clue = clu;
 	is_truthful = truth;
 }
 
+//deconstructor
+Clue::~Clue(){}
 
-Clue::~Clue()
+//default constructor
+Treasure::Treasure():Grovnick()
 {
-	//TODO fill
-}
-
-
-Treasure::Treasure()
-{
-	//again, same concerns here about initialization list
 	treasure = 0;
 }
 
-
-Treasure::Treasure(int y, int x, int cst, int tpe, string nme, int prize)
+//constructor with arguments
+Treasure::Treasure(int y, int x, int cst, int tpe, string nme, int prize):Grovnick(y, x, cst, tpe, nme)
 {
-	y_axis = y;
-	x_axis = x;
-	cost = cst;
-	type = tpe;
-	name = nme;
-	//initialization list instead?
 	treasure = prize;
 }
 
+//deconstructor
+Treasure::~Treasure(){}
 
-Treasure::~Treasure()
-{
-	//TODO fill
-}
+//default constructor
+Ship::Ship():Grovnick(){}
+
+//constructor with arguments
+Ship::Ship(int y, int x, int cst, int tpe, string nme):Grovnick(y, x, cst, tpe, nme){}
+
+//destructor
+Ship::~Ship(){}
+
+//default constructor
+Binoculars::Binoculars():Grovnick(){}
+
+//constructor with arguments
+Binoculars::Binoculars(int y, int x, int cst, int tpe, string nme):Grovnick(y, x, cst, tpe, nme){}
+
+//destructor
+Binoculars::~Binoculars(){}
+#endif  //GROVNICK_CPP

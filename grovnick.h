@@ -14,6 +14,8 @@
 	4 = Royal Diamond;
 	5 = Clue;
 	6 = Treasure Chest
+	7 = Ship
+	8 = Binoculars
 */
 
 #include <iostream>
@@ -35,8 +37,6 @@ class Grovnick
 		int cost;
 		int type;
 		string name;
-
-		//other functions and variables?
 };
 
 class Food: public Grovnick
@@ -56,7 +56,7 @@ class Obstacle: public Grovnick
 		Obstacle();
 		Obstacle(int y, int x, int cst, int tpe, string nme, int obs_tpe);
 		~Obstacle();
-		int obs_type;	//how many ints? different than grovnick::type?
+		int obs_type;
 		//obs_type == 1 for tree, 2 for boulder
 };
 
@@ -67,10 +67,9 @@ class Tool: public Grovnick
 		Tool(int y, int x, int cst, int tpe, string nme, int tl_tpe, int effectiveness);
 		~Tool();
 		bool type_match(Obstacle);
-		int tool_type;  //different than grovnick::type?
+		int tool_type;  
 		//tool_type == 1 for axe (for trees), 2 for hammer (for boulder); essentially just needs to match obstacle type
 		int item_effectiveness;
-		//doesn't need string name because inherited
 };
 
 class Royal_Diamond: public Grovnick
@@ -106,4 +105,19 @@ class Treasure: public Grovnick
 		int treasure;
 };
 
-#endif
+class Ship: public Grovnick
+{
+	public:
+		Ship();
+		Ship(int y, int x, int cst, int tpe, string nme);
+		~Ship();
+};	
+
+class Binoculars: public Grovnick
+{
+	public:
+		Binoculars();
+		Binoculars(int y, int x, int cst, int tpe, string nme);
+		~Binoculars();
+};
+#endif //GROVNICK
