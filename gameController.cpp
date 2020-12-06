@@ -213,4 +213,4 @@ bool GameController::loadMap()
 	return true;
 }
 
-#endif  //GAMECONT_CPP
+//#endif  //GAMECONT_CPP
