@@ -1,6 +1,3 @@
-#ifndef NCURSES_CPP
-#define NCURSES_CPP
-
 //NcursesController class
 //handles the display of the frupal game
 //Displays map, character stats and options
@@ -445,4 +442,3 @@ void NcursesController::move_cursor(char map[128][128], int discovered[128][128]
   refresh();
 }
 
-#endif  //NCURSES_CPP

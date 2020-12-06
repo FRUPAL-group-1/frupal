@@ -1,3 +1,6 @@
+#ifndef GROVNICK_H
+#define GROVNICK_H
+
 //CS300 Fall 2020
 //Group 1
 //grovnick.h
@@ -14,7 +17,7 @@
 	7 = Ship
 	8 = Binoculars
 */
-#ifndef GROVNICK
+
 #include <iostream>
 #include <string.h>
 

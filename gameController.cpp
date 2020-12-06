@@ -1,6 +1,3 @@
-#ifndef GAMECONT_CPP
-#define GAMECONT_CPP
-
 //impliments all of the gameController functions
 
 #include "gameController.h"
@@ -78,7 +75,31 @@ bool GameController::update()
 				      move((LINES/2)-1, ((COLS-30)/2)-1);
 				      break;
 				      }
+              
+              //------ START
+            case 3:
+              {
+                Tool *current = dynamic_cast<Tool *>(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
+                if(current && current -> type == 3)
+                {
 
+                  //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
+                  //the Tool class makes a segfault on line 105, and then Grovnick says
+                  //  tooltype and item_effectiveness does not exist in grovnick
+                  Tool *toolptr = new Tool( current->y_axis, 
+                      current->x_axis,
+                      current->cost, 
+                      current->type,
+                      current->name,
+                      current->tool_type,           //in the Tool derived class
+                      current->item_effectiveness   //in the Tool derived class
+                      );
+                  hero.addToolToInventory(toolptr);
+                  current = NULL;
+                }
+              }
+              //------ END
+              
 				    case 6: //treasure chest
 				      {
 				      Treasure * chest = dynamic_cast<Treasure *>(current);

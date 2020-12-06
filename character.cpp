@@ -1,6 +1,3 @@
-#ifndef CHAR_CPP
-#define CHAR_CPP
-
 // character.cpp
 //
 // This files contains the character class.
@@ -11,81 +8,140 @@
 
 Character::Character()
 {
-	yAxis = 1;
-	xAxis = 1;
-	energy = 102;
-	whiffles = 1000;
-	binoculars = false;
-	boat = false;
+  yAxis = 1;
+  xAxis = 1;
+  energy = 102;
+  whiffles = 1000;
+  binoculars = false;
+  boat = false;
+  for(int i = 0; i < MAX_TOOLS; ++i)
+  {
+    toolbag[i] = NULL;
+  }
 }
 
 
 Character::~Character()
 {
-
 }
 
 
 int Character::checkEnergy()
 {
-	return energy;
+  return energy;
 }
 
 
 void Character::addEnergy(int added)
 {
-	energy += added;
+  energy += added;
 }
 
 
 void Character::spendEnergy(int spent)
 {
-	energy -= spent;
+  energy -= spent;
 }
 
 
 int Character::checkWhiffles()
 {
-	return whiffles;
+  return whiffles;
 }
 
 
 void Character::addWhiffles(int added)
 {
-	whiffles += added;
+  whiffles += added;
 }
 
 
 void Character::spendWhiffles(int spent)
 {
-	whiffles -= spent;
+  whiffles -= spent;
 }
 
 void Character::gainBinoculars()
 {
-	binoculars = true;
+  binoculars = true;
 }
 
 
 void Character::gainBoat()
 {
-	boat = false;
+  boat = false;
 }
 
 
 bool Character::hasBoat()
 {
-	if (boat) return true;
+  if (boat) return true;
 
-	else return false;
+  else return false;
 }
 
 
 bool Character::hasBinoculars()
 {
-	if (binoculars) return true;
+  if (binoculars) return true;
 
-	else return false;
+  else return false;
 }
 
-#endif  //CHAR_CPP
+//the toolbag will only ever store tools.... so why typecasting?
+//takes in a pointer to the address of the item since memory is allocated outside the function
+bool Character::addToolToInventory(Tool *&item)
+{
+  int i = freeSpotInToolBag();
+  if(i >= 0 && i < MAX_TOOLS) //check for valid range
+  {
+    toolbag[i] = item;
+    return true;
+  }
+  return false;
+}
+
+//returns the free index of the toolbag
+int Character::freeSpotInToolBag()
+{
+  for(int i = 0; i < MAX_TOOLS; ++i)
+  {
+    if(!toolbag[i])
+      return i; //index to add the tool to
+  }
+  return -1;  //no room!
+}
+void Character::dropToolFromToolbag(int whichtool)
+{
+  if(toolbag[whichtool])
+  {
+    //TODO: memory management because right now, its just bad practice
+    toolbag[whichtool] = NULL;
+  }
+}
+
+//clear a obstacle, takes in an obstacle class type object and a tool number
+//from user selection
+int clearObstacle(Grovnick *grovnicks[128][128], Character *hero, int toolNumber)
+{
+  Obstacle *obstacle = dynamic_cast<Obstacle*>(grovnicks[hero->yAxis][hero->xAxis]);
+  if(!obstacle)
+    return -1;  //if the obstacle is not valid
+  if(!hero->toolbag[toolNumber])
+    return -2;  //if the toolbag item is invalid
+  
+  //now obstacle AND tools should be valid, time to check if they match up
+  if(hero->toolbag[toolNumber]->type_match(*obstacle))
+  {
+    //now we know that the obstacle and tool match, 
+    hero->spendEnergy( (obstacle->cost)
+                        
+                      /(hero->toolbag[toolNumber]->item_effectiveness)
+                     );
+    //TODO some memory managment here!
+    grovnicks[hero->yAxis][hero->xAxis] = NULL;
+    return 1; //obstacle removed!
+  }
+
+  return 0; //obstacle and tool type did not match
+}

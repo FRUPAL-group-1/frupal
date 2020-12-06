@@ -1,7 +1,5 @@
-#ifndef MAP_CPP
-#define MAP_CPP
-
 //map.cpp
+
 #include "map.h"
 using namespace std;
 
@@ -142,4 +140,3 @@ void Map::setGrovnick(Grovnick * ptr, int x, int y)
 }
 
 
-#endif //MAP_CPP

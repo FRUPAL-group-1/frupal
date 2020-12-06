@@ -1,3 +1,6 @@
+#ifndef NCURSES
+#define NCURSES
+
 #include <iostream>
 #include <curses.h>
 #include <fstream>
@@ -35,3 +38,5 @@ class NcursesController
     int DIAMOND_PAIR;
 
 };
+
+#endif  //NCURSES

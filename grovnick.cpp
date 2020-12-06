@@ -1,6 +1,3 @@
-#ifndef GROVNICK_CPP
-#define GROVNICK_CPP
-
 //CS300 Fall 2020
 //Group 1
 //grovnick.cpp
@@ -66,6 +63,7 @@ Obstacle::Obstacle():Grovnick()
 Obstacle::Obstacle(int y, int x, int cst, int tpe, string nme, int obs_tpe):Grovnick(y, x, cst, tpe, nme)
 {
 	obs_type = obs_tpe;
+
 }
 
 //deconstructor
@@ -77,9 +75,18 @@ Tool::Tool():Grovnick()
 	item_effectiveness = 0;	
 }
 
-//constructor with arguments
-Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiveness):Grovnick(y, x, cst, tpe, nme)
+//have the Tool constructor call onto the base class constructor
+Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiveness):Grovnick(y,x,cst,tpe,nme)
 {
+  //Let the constructor for the default class take care of making the parent
+	/*
+  y_axis = y;
+	x_axis = x;
+	cost = cst;
+	type = tpe;
+	name = nme;
+  */
+	//initialization list instead?
 	tool_type = tl_type;
 	item_effectiveness = effectiveness;	
 }
@@ -96,8 +103,7 @@ bool Tool::type_match(Obstacle to_check)
 		return false;
 }
 
-//default constructor
-Royal_Diamond::Royal_Diamond():Grovnick()
+Royal_Diamond::Royal_Diamond()
 {
 	grand_prize = 0;
 }
