@@ -28,6 +28,7 @@ Use to create zip
 
 * `make zip`
 
+### Controls
 
 Keybind         | Control
 ----------------|--------
