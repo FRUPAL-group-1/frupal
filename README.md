@@ -19,6 +19,10 @@ Use to make and run:
 
 * `make && ./frupal`
 
+Use to create zip
+
+* `make zip`
+
 Keybind         | Control
 ----------------|--------
 w               | Move Hero up
