@@ -23,6 +23,7 @@ Use to create zip
 
 * `make zip`
 
+
 Keybind         | Control
 ----------------|--------
 w               | Move Hero up
