@@ -11,6 +11,7 @@
 One map is provided for the project. 
 * `map.txt` is the file that holds the map for the game, and any subsequent maps will need to be named `map.txt`
 
+### Make instructions
 Use the following to build:
 
 * `make`
@@ -27,8 +28,6 @@ Use to create zip
 
 * `make zip`
 
-### Group Video
-* Link: 
 
 Keybind         | Control
 ----------------|--------
@@ -42,3 +41,7 @@ Arrow key down  | Move cursor down
 Arrow key left  | Move cursor left
 Arrow key right | Move cursor right
 q               | Quit
+
+
+### Group Video
+* Link: 
