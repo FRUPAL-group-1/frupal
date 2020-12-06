@@ -9,7 +9,7 @@
       
 ### Map
 One map is provided for the project. 
-`map.txt` is the file that holds the map for the game, and any subsequent maps will need to be named `map.txt`
+* `map.txt` is the file that holds the map for the game, and any subsequent maps will need to be named `map.txt`
 
 Use the following to build:
 
@@ -28,7 +28,7 @@ Use to create zip
 * `make zip`
 
 ###Group Video
-Link: 
+*Link: 
 
 Keybind         | Control
 ----------------|--------
