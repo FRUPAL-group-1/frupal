@@ -75,7 +75,7 @@ bool GameController::update()
 				      move((LINES/2)-1, ((COLS-30)/2)-1);
 				      break;
 				    }
-              
+
 		            //------ START
 		            case 3:
 		            {
@@ -86,9 +86,9 @@ bool GameController::update()
 		                  //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
 		                  //the Tool class makes a segfault on line 105, and then Grovnick says
 		                  //  tooltype and item_effectiveness does not exist in grovnick
-		                  Tool *toolptr = new Tool( current->y_axis, 
+		                  Tool *toolptr = new Tool( current->y_axis,
 		                      current->x_axis,
-		                      current->cost, 
+		                      current->cost,
 		                      current->type,
 		                      current->name,
 		                      current->tool_type,           //in the Tool derived class
@@ -99,7 +99,7 @@ bool GameController::update()
 		                }
 		            }
 		            //------ END
-              
+
 				    case 6: //treasure chest
 				    {
 				      Treasure * chest = dynamic_cast<Treasure *>(current);
@@ -212,5 +212,3 @@ bool GameController::loadMap()
 	currentMap.initializeGrovnicks();
 	return true;
 }
-
-#endif  //GAMECONT_CPP
