@@ -113,9 +113,9 @@ bool GameController::update()
                   //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
                   //the Tool class makes a segfault on line 105, and then Grovnick says
                   //  tooltype and item_effectiveness does not exist in grovnick
-                  Tool *toolptr = new Tool( current->y_axis, 
+                  Tool *toolptr = new Tool( current->y_axis,
                       current->x_axis,
-                      current->cost, 
+                      current->cost,
                       current->type,
                       current->name,
                       current->tool_type,           //in the Tool derived class
@@ -135,6 +135,25 @@ bool GameController::update()
                 ncursescontroller.displayMove(hero.whiffles, hero.energy);
                 move((LINES/2)-1, ((COLS-30)/2)-1);
                 break;
+              }
+
+            case 7: //ship
+              {
+                hero.spendWhiffles(current->cost);
+                currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+                ncursescontroller.displayMove(hero.whiffles, hero.energy);
+                hero.gainBoat();
+                move((LINES/2)-1, ((COLS-30)/2)-1);
+                break;
+              }
+
+            case 8: //binoculars
+              {
+                hero.spendWhiffles(current->cost);
+                currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+                ncursescontroller.displayMove(hero.whiffles, hero.energy);
+                hero.gainBinoculars();
+                move((LINES/2)-1, ((COLS-30)/2)-1);
               }
 
             default:
