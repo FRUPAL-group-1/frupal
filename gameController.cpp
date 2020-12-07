@@ -239,5 +239,3 @@ bool GameController::loadMap()
   currentMap.initializeGrovnicks();
   return true;
 }
-
-//#endif  //GAMECONT_CPP
