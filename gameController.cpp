@@ -78,25 +78,25 @@ bool GameController::update()
               
 				    case 3: //tool
 				    {
-					Tool *current = dynamic_cast<Tool *>(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
-					if(current && current -> type == 3)
-					{
+              Tool *current = dynamic_cast<Tool *>(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
+              if(current && current -> type == 3)
+              {
 
-					  //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
-					  //the Tool class makes a segfault on line 105, and then Grovnick says
-					  //  tooltype and item_effectiveness does not exist in grovnick
-					  Tool *toolptr = new Tool( current->y_axis, 
-					      current->x_axis,
-					      current->cost, 
-					      current->type,
-					      current->name,
-					      current->tool_type,           //in the Tool derived class
-					      current->item_effectiveness   //in the Tool derived class
-					      );
-					  hero.addToolToInventory(toolptr);
-					  current = NULL;
-					}
-					break;
+                //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
+                //the Tool class makes a segfault on line 105, and then Grovnick says
+                //  tooltype and item_effectiveness does not exist in grovnick
+                Tool *toolptr = new Tool( current->y_axis, 
+                    current->x_axis,
+                    current->cost, 
+                    current->type,
+                    current->name,
+                    current->tool_type,           //in the Tool derived class
+                    current->item_effectiveness   //in the Tool derived class
+                    );
+                hero.addToolToInventory(toolptr);
+                current = NULL;
+              }
+              break;
 				    }
 
 				    case 4: //diamond
@@ -105,8 +105,6 @@ bool GameController::update()
 					    hero.addWhiffles(1000000000); // add to bank account
 					    break;
 				    }
-			   
-              
 				    case 6: //treasure chest
 				    {
 				      Treasure * chest = dynamic_cast<Treasure *>(current);

@@ -37,10 +37,10 @@ bool Grovnick::is_match(int x, int y)
 }
 
 //default constructor
-Food::Food():Grovnick() 
+Food::Food():Grovnick()
 {
 	restore = 0;
-	is_consumed = false;	
+	is_consumed = false;
 }
 
 //constructor with arguments
@@ -72,7 +72,7 @@ Obstacle::~Obstacle(){}
 //default constructor
 Tool::Tool():Grovnick()
 {
-	item_effectiveness = 0;	
+	item_effectiveness = 0;
 }
 
 //have the Tool constructor call onto the base class constructor
@@ -88,7 +88,7 @@ Tool::Tool(int y, int x, int cst, int tpe, string nme, int tl_type, int effectiv
   */
 	//initialization list instead?
 	tool_type = tl_type;
-	item_effectiveness = effectiveness;	
+	item_effectiveness = effectiveness;
 }
 
 //deconstructor
@@ -116,7 +116,7 @@ Royal_Diamond::Royal_Diamond(int y, int x, int cst, int tpe, string nme, int pri
 
 //deconstructor
 Royal_Diamond::~Royal_Diamond(){}
-		
+
 //default constructor
 Clue::Clue():Grovnick()
 {
