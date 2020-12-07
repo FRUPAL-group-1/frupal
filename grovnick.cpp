@@ -97,10 +97,14 @@ Tool::~Tool(){}
 //check if tool and obstacle types match
 bool Tool::type_match(Obstacle to_check)
 {
-	if(tool_type == to_check.obs_type)
-		return true;
-	else
-		return false;
+  if(to_check.type == 2)
+  {
+	  if(tool_type == to_check.obs_type)
+		  return true;
+	  else
+		  return false;
+  }
+  return false;
 }
 
 Royal_Diamond::Royal_Diamond()
