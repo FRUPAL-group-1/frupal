@@ -123,12 +123,14 @@ int Map::initializeGrovnicks()
       } break;
       case 7:
       {
-        // Ship stuff
+        Grovnick * shipPtr = new Ship(y, x, cst, 7, name);
+        setGrovnick(shipPtr, x, y);
 
       } break;
       case 8:
       {
-        // Binoculars stuff
+        Grovnick * binocularPtr = new Binoculars(y, x, cst, 7, name);
+        setGrovnick(binocularPtr, x, y);
 
       } break;
     }
