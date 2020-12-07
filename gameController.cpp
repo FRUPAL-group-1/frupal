@@ -229,4 +229,3 @@ bool GameController::loadMap()
 	currentMap.initializeGrovnicks();
 	return true;
 }
-
