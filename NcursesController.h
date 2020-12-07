@@ -27,6 +27,7 @@ class NcursesController
     void move_cursor(char map[128][128], int discovered[128][128], int keypress, int& herocursorx, int& herocursory);
     int checkCursorMove(int cursor_x, int cursor_y, int herocursory, int herocursorx, int discovered[128][128]);
     bool displaygrovnick(int y, int x, int printy, int printx, Grovnick * grovnicks[128][128]);
+    void displayVictory();
 
   private:
     //define names to the colorpair settings
