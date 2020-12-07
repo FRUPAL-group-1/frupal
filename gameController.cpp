@@ -126,7 +126,14 @@ bool GameController::update()
                 }
               }
               break;
-
+              
+				    case 4: //diamond
+				    {
+					    Royal_Diamond * current = dynamic_cast<Royal_Diamond *>(current);
+					    hero.addWhiffles(1000000000); // add to bank account
+					    break;
+				    }
+              
             case 6: //treasure chest
               {
                 Treasure * chest = dynamic_cast<Treasure *>(current);
@@ -189,6 +196,14 @@ bool GameController::update()
     {
       return 0;
     }
+    
+    if(hero.whiffles >= 1000000000) // end game with diamond
+		{
+
+			ncursescontroller.displayVictory();
+			return 0;
+		}
+    
     Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
     if(temp)
     {
