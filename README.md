@@ -43,6 +43,19 @@ Arrow key left  | Move cursor left
 Arrow key right | Move cursor right
 q               | Quit
 
+### Features Implemented
+All features listed in the project requirments were implemented.
+* Food and treasure interaction
+* Tool and obstacle interaction
+* Clue, ship, and binocular implemention
+* Game win on diamond get
+* Game loss on energy depletion
+
+### Additional Links
+
+* Trello: [link to Trello screenshot](https://i.imgur.com/8s0irSG.png)
+* UML: [link to UML](https://app.creately.com/diagram/aOOzlydegZu/view)
+
 
 ### Group Video
 * Link: 
