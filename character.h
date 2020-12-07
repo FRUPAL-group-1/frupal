@@ -37,9 +37,10 @@ class Character
     bool addToolToInventory(Tool *&item);
     int freeSpotInToolBag();
     void dropToolFromToolbag(int whichtool);
+    void printTools();
     
     //pass in the map for the grovnicks, then pass in a 0-MAX_TOOLS item to use
-    int clearObstacle(Grovnick *grovnicks[128][128], Character *hero, int toolNumber);
+    int clearObstacle(Grovnick *grovnicks[128][128], int toolNumber);
 	
 		int yAxis;
 		int xAxis;

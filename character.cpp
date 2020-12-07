@@ -6,6 +6,8 @@
 #include "character.h"
 
 
+
+
 Character::Character()
 {
   yAxis = 1;
@@ -122,26 +124,36 @@ void Character::dropToolFromToolbag(int whichtool)
 
 //clear a obstacle, takes in an obstacle class type object and a tool number
 //from user selection
-int clearObstacle(Grovnick *grovnicks[128][128], Character *hero, int toolNumber)
+int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
 {
-  Obstacle *obstacle = dynamic_cast<Obstacle*>(grovnicks[hero->yAxis][hero->xAxis]);
+  Obstacle *obstacle = dynamic_cast<Obstacle*>(grovnicks[yAxis][xAxis]);
   if(!obstacle)
     return -1;  //if the obstacle is not valid
-  if(!hero->toolbag[toolNumber])
+  if(!toolbag[toolNumber])
     return -2;  //if the toolbag item is invalid
-  
+
   //now obstacle AND tools should be valid, time to check if they match up
-  if(hero->toolbag[toolNumber]->type_match(*obstacle))
+  if(toolbag[toolNumber]->type_match(*obstacle))
   {
     //now we know that the obstacle and tool match, 
-    hero->spendEnergy( (obstacle->cost)
-                        
-                      /(hero->toolbag[toolNumber]->item_effectiveness)
-                     );
+    spendEnergy( (obstacle->cost)
+                /(toolbag[toolNumber]->item_effectiveness)
+        );
     //TODO some memory managment here!
-    grovnicks[hero->yAxis][hero->xAxis] = NULL;
+    grovnicks[yAxis][xAxis] = NULL;
     return 1; //obstacle removed!
   }
 
   return 0; //obstacle and tool type did not match
+}
+
+void Character::printTools()
+{
+  int leftbuffer = COLS - 28;
+  for(int i = 0; i < MAX_TOOLS; ++i)
+  {
+    mvprintw(LINES-20, leftbuffer, " The tools you have are: ");
+    if(toolbag[i])
+      mvprintw(i+LINES-19, leftbuffer, " %d) %s\n", i+1, toolbag[i]->name.data());
+  }
 }
