@@ -166,4 +166,3 @@ Binoculars::Binoculars(int y, int x, int cst, int tpe, string nme):Grovnick(y, x
 
 //destructor
 Binoculars::~Binoculars(){}
-//#endif  //GROVNICK_CPP

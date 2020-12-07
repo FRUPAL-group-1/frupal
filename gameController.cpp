@@ -76,29 +76,36 @@ bool GameController::update()
 				      break;
 				    }
               
-		            //------ START
-		            case 3:
-		            {
-		                Tool *current = dynamic_cast<Tool *>(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
-		                if(current && current -> type == 3)
-		                {
+				    case 3: //tool
+				    {
+					Tool *current = dynamic_cast<Tool *>(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
+					if(current && current -> type == 3)
+					{
 
-		                  //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
-		                  //the Tool class makes a segfault on line 105, and then Grovnick says
-		                  //  tooltype and item_effectiveness does not exist in grovnick
-		                  Tool *toolptr = new Tool( current->y_axis, 
-		                      current->x_axis,
-		                      current->cost, 
-		                      current->type,
-		                      current->name,
-		                      current->tool_type,           //in the Tool derived class
-		                      current->item_effectiveness   //in the Tool derived class
-		                      );
-		                  hero.addToolToInventory(toolptr);
-		                  current = NULL;
-		                }
-		            }
-		            //------ END
+					  //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
+					  //the Tool class makes a segfault on line 105, and then Grovnick says
+					  //  tooltype and item_effectiveness does not exist in grovnick
+					  Tool *toolptr = new Tool( current->y_axis, 
+					      current->x_axis,
+					      current->cost, 
+					      current->type,
+					      current->name,
+					      current->tool_type,           //in the Tool derived class
+					      current->item_effectiveness   //in the Tool derived class
+					      );
+					  hero.addToolToInventory(toolptr);
+					  current = NULL;
+					}
+					break;
+				    }
+
+				    case 4: //diamond
+				    {
+					    Royal_Diamond * current = dynamic_cast<Royal_Diamond *>(current);
+					    hero.addWhiffles(1000000000); // add to bank account
+					    break;
+				    }
+			   
               
 				    case 6: //treasure chest
 				    {
@@ -139,11 +146,21 @@ bool GameController::update()
 			default:
 				break;
 		}
+
 		if(hero.energy <= 0) //end game at 0 energy
 		{
 			return 0;
 		}
+
+		if(hero.whiffles >= 1000000000) // end game with diamond
+		{
+
+			ncursescontroller.displayVictory();
+			return 0;
+		}
+
 		Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
+
 		if(temp)
 		{
 			//need to set up a loop for display discovered grovnicks? How to display only discovered grovnicks? use discovered[128][128] instead of grovnicks[][]?
@@ -212,5 +229,3 @@ bool GameController::loadMap()
 	currentMap.initializeGrovnicks();
 	return true;
 }
-
-//#endif  //GAMECONT_CPP
