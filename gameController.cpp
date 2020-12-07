@@ -77,19 +77,36 @@ bool GameController::update()
               }
             case 2:
               {
-                int toolSelect = -1;
+                char ch;
                 //I DO THIS INSIDE THE FUNCTION
                 //Obstacle *currentObstacle = dynamic_cast<Obstacle *>(current);
                 hero.printTools();
-                mvprintw(LINES-10, leftbuffer, " What tool would you like to use?");
-                toolSelect = getch();
-                hero.clearObstacle(currentMap.grovnicks, toolSelect);
-                break;
+                mvprintw(LINES-10, leftbuffer, " What tool to use?");
+                ch = getch();
+                switch(ch)
+                {
+                  case '1':
+                    hero.clearObstacle(currentMap.grovnicks, 1);
+                    break;
+                  case '2':
+                    hero.clearObstacle(currentMap.grovnicks, 2);
+                    break;
+                  case '3':
+                    hero.clearObstacle(currentMap.grovnicks, 3);
+                    break;
+                  case '4':
+                    hero.clearObstacle(currentMap.grovnicks, 4);
+                    break;
+                  case '5':
+                    hero.clearObstacle(currentMap.grovnicks, 5);
+                    break;
+                }
               }
+              break;
 
             case 3:
               {
-                Tool *current = dynamic_cast<Tool *>(currentMap.grovnicks[hero.yAxis][hero.xAxis]);
+                Tool *current = dynamic_cast<Tool *>(current);
                 if(current && current -> type == 3)
                 {
 
