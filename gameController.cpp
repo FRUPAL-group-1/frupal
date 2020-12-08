@@ -110,7 +110,7 @@ bool GameController::update()
             case 3:
               {
                 Tool * toolPtr = dynamic_cast<Tool *>(current);
-                hero.addToolToInventory(toolptr);
+                hero.addToolToInventory(toolPtr);
                 currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
 
                 /*
