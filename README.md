@@ -46,6 +46,7 @@ q               | Quit
 ### Features Implemented
 All features listed in the project requirments were implemented.
 * Food and treasure interaction
+* Tool and obstacle interaction
 * Clue, ship, and binocular implemention
 * Game win on diamond get
 * Game loss on energy depletion
