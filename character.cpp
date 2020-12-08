@@ -133,6 +133,7 @@ bool Character::addToolToInventory(Tool *&item)
           break;
         default:
           mvprintw(LINES-30, leftbuffer, " You didnt drop any tools");
+          return false;
           break;
       }
 
