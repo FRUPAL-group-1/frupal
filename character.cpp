@@ -71,7 +71,7 @@ void Character::gainBinoculars()
 
 void Character::gainBoat()
 {
-  boat = false;
+  boat = true;
 }
 
 
@@ -133,6 +133,7 @@ bool Character::addToolToInventory(Tool *&item)
           break;
         default:
           mvprintw(LINES-30, leftbuffer, " You didnt drop any tools");
+          return false;
           break;
       }
 
@@ -209,5 +210,5 @@ bool Character::isToolBagFull()
     if(toolbag[i] == NULL)
       return false;
   }
-  return false;
+  return true;
 }
