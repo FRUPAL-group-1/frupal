@@ -11,7 +11,7 @@
 1,7,54,5,a handful of nuts,5,false
 1,46,8,1,huckleberries on a bush,15,false
 1,49,10,20,leftover Chinese takeout,25,false
-1,54,8,15,gas station burrito,10,false
+1,54,7,15,gas station burrito,10,false
 1,44,5,10,cotton candy,10,false
 1,42,2,50,artisan salt aged beef,25,false
 1,40,8,15,eggplant parmesan,20,false
@@ -31,7 +31,7 @@
 1,123,18,9,ham sandwich,84,false
 1,123,21,1,avocado toast,68,false
 1,126,48,6,baked salmon,78,false
-1,100,42,61,barbacoa taco,19,false
+1,100,44,61,barbacoa taco,19,false
 1,112,49,22,sliced mango,18,false
 1,72,41,44,boiled king crab,16,false
 1,101,58,1,buttery lobster,16,false
@@ -102,7 +102,7 @@
 3,34,74,50,pickaxe,2,3
 3,35,95,50,camping axe,1,3
 3,22,10,40,small hatchet,2
-3,29,15,150,mjolnir,6
+3,29,14,150,mjolnir,6
 3,46,4,20,ballpeen hammer,2
 3,49,5,35,sledgehammer,3
 3,47,44,20,claw hammer,2
@@ -130,7 +130,7 @@
 6,22,81,0,gift from grandma,50
 6,23,49,0,jewelry box,100
 6,25,55,0,chest of pirate doubloons,400
-6,23,59,0,DB Cooper's stash,800
+6,23,58,0,DB Cooper's stash,800
 6,26,50,0,foreign currency,50
 6,34,53,0,somebody's coin collection,450
 6,35,20,0,ancient coins,60
