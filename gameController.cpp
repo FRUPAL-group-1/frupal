@@ -208,11 +208,11 @@ bool GameController::update()
     }
 
     if(hero.whiffles >= 1000000000) // end game with diamond
-		{
+    {
 
-			ncursescontroller.displayVictory();
-			return 0;
-		}
+		ncursescontroller.displayVictory();
+		return 0;
+    }
 
     Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
     if(temp)
