@@ -279,10 +279,12 @@ bool NcursesController::displaygrovnick(int y, int x, int printy, int printx, Gr
         return true;
         break;
       case 7: //ship
-        // do stuff...
+	mvaddch(printy,printx,'S');
+        return true;
         break;
       case 8: //binoculars
-        // do stuff...
+        mvaddch(printy,printx,'B');
+        return true;
         break;
     }
   } else {
