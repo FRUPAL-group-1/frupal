@@ -109,7 +109,11 @@ bool GameController::update()
 
             case 3:
               {
-                Tool *current = dynamic_cast<Tool *>(current);
+                Tool * toolPtr = dynamic_cast<Tool *>(current);
+                hero.addToolToInventory(toolptr);
+                currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+
+                /*
                 if(current && current -> type == 3)
                 {
 
@@ -127,15 +131,16 @@ bool GameController::update()
                   hero.addToolToInventory(toolptr);
                   currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
                 }
+                */
+                break;
               }
-              break;
 
-	    case 4: //diamond
-	    {
-		    Royal_Diamond * current = dynamic_cast<Royal_Diamond *>(current);
-		    hero.addWhiffles(1000000000); // add to bank account
-		    break;
-	    }
+      	    case 4: //diamond
+        	    {
+        		    //Royal_Diamond * current = dynamic_cast<Royal_Diamond *>(current);
+        		    hero.addWhiffles(1000000000); // add to bank account
+        		    break;
+        	    }
 
             case 6: //treasure chest
               {
