@@ -6,13 +6,13 @@
 #include "character.h"
 
 
-int leftbuffer = COLS - 28;
+//int leftbuffer = COLS - 28;
 
 Character::Character()
 {
   yAxis = 1;
   xAxis = 1;
-  energy = 102;
+  energy = 1002;
   whiffles = 1000;
   binoculars = false;
   boat = false;
@@ -94,6 +94,8 @@ bool Character::hasBinoculars()
 //takes in a pointer to the address of the item since memory is allocated outside the function
 bool Character::addToolToInventory(Tool *&item)
 {
+
+  int leftbuffer = COLS - 28;
   int i = freeSpotInToolBag();
   //bool isfull = isToolBagFull();
   if(i >= -1 && i < MAX_TOOLS) //check for valid range
@@ -109,26 +111,31 @@ bool Character::addToolToInventory(Tool *&item)
         case '1':
           dropToolFromToolbag(0);
           toolbag[i] = item;
+	  spendWhiffles(toolbag[i]->cost);
           return true;
           break;
         case '2':
           dropToolFromToolbag(1);
           toolbag[i] = item;
+	  spendWhiffles(toolbag[i]->cost);
           return true;
           break;
         case '3':
           dropToolFromToolbag(2);
           toolbag[i] = item;
+	  spendWhiffles(toolbag[i]->cost);
           return true;
           break;
         case '4':
           dropToolFromToolbag(3);
           toolbag[i] = item;
+	  spendWhiffles(toolbag[i]->cost);
           return true;
           break;
         case '5':
           dropToolFromToolbag(4);
           toolbag[i] = item;
+	  spendWhiffles(toolbag[i]->cost);
           return true;
           break;
         default:
@@ -140,6 +147,7 @@ bool Character::addToolToInventory(Tool *&item)
     else
     {
       toolbag[i] = item;
+      spendWhiffles(toolbag[i]->cost);
       return true;
     }
   }
@@ -169,8 +177,15 @@ void Character::dropToolFromToolbag(int whichtool)
 //from user selection
 int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
 {
-  --toolNumber; //since the user is given 1 -> MAX_TOOLS, NOT 0 - MAX_TOOLS-1
   Obstacle *obstacle = dynamic_cast<Obstacle*>(grovnicks[yAxis][xAxis]);
+
+  if(toolNumber == 6)
+  {
+	  spendEnergy(obstacle->cost);
+	  grovnicks[yAxis][xAxis] = NULL;
+	  return 1;
+  }
+  --toolNumber; //since the user is given 1 -> MAX_TOOLS, NOT 0 - MAX_TOOLS-1
   if(!obstacle)
     return -1;  //if the obstacle is not valid
   if(toolbag[toolNumber] != NULL)
@@ -185,6 +200,7 @@ int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
           );
       //TODO some memory managment here!
       grovnicks[yAxis][xAxis] = NULL;
+      toolbag[toolNumber] = NULL;
       return 1; //obstacle removed!
     }
   }
@@ -192,6 +208,7 @@ int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
   {
     spendEnergy(obstacle->cost);
     grovnicks[yAxis][xAxis] = NULL;
+    toolbag[toolNumber] = NULL;
     return 1;
   }
 
@@ -200,13 +217,13 @@ int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
 
 void Character::printTools()
 {
+  int leftbuffer = COLS - 28;
   mvprintw(LINES-30, leftbuffer, " The tools you have are: ");
   for(int i = 0; i < MAX_TOOLS; ++i)
   {
     if(toolbag[i])
     {
-      mvprintw( 30, leftbuffer, "Hello");
-      mvprintw( (LINES-29)-i, leftbuffer, " %d) %s", i+1, toolbag[i]->name.data());
+      mvprintw( (LINES-29)+i, leftbuffer, " %d) %s", i+1, toolbag[i]->name.data());
     }
   }
 }

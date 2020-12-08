@@ -16,6 +16,8 @@ bool GameController::update()
   int keypress = 5;  //declare once
   int cursorx; //keep track of cursor when hero moves
   int cursory; //keep track of cursor when hero moves
+  int prevx; // previous x
+  int prevy; // previous y
   int leftbuffer = COLS - 28;
   ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
   ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
@@ -89,6 +91,8 @@ bool GameController::update()
                 ch = getch();
                 switch(ch)
                 {
+		  case 'x':
+		    hero.clearObstacle(currentMap.grovnicks, 6);
                   case '1':
                     hero.clearObstacle(currentMap.grovnicks, 1);
                     break;
@@ -218,6 +222,8 @@ bool GameController::update()
 		return 0;
     }
 
+    getyx(stdscr, prevy, prevx);
+
     Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
     if(temp)
     {
@@ -277,6 +283,8 @@ bool GameController::update()
     }
 
   }
+
+  move(prevy, prevx);
   return 0;
 }
 
