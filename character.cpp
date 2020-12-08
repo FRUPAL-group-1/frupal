@@ -175,19 +175,26 @@ int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
   Obstacle *obstacle = dynamic_cast<Obstacle*>(grovnicks[yAxis][xAxis]);
   if(!obstacle)
     return -1;  //if the obstacle is not valid
-  if(toolbag[toolNumber] == NULL)
-    return -2;  //if the toolbag item is invalid
-
-  //now obstacle AND tools should be valid, time to check if they match up
-  if(toolbag[toolNumber]->type_match(*obstacle))
+  if(toolbag[toolNumber] != NULL)
   {
-    //now we know that the obstacle and tool match,
-    spendEnergy( (obstacle->cost)
-                /(toolbag[toolNumber]->item_effectiveness)
-        );
-    //TODO some memory managment here!
+
+    //now obstacle AND tools should be valid, time to check if they match up
+    if(toolbag[toolNumber]->type_match(*obstacle))
+    {
+      //now we know that the obstacle and tool match,
+      spendEnergy( (obstacle->cost)
+          /(toolbag[toolNumber]->item_effectiveness)
+          );
+      //TODO some memory managment here!
+      grovnicks[yAxis][xAxis] = NULL;
+      return 1; //obstacle removed!
+    }
+  }
+  else
+  {
+    spendEnergy(obstacle->cost);
     grovnicks[yAxis][xAxis] = NULL;
-    return 1; //obstacle removed!
+    return 1;
   }
 
   return 0; //obstacle and tool type did not match
