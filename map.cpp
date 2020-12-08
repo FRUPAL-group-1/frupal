@@ -131,15 +131,15 @@ int Map::initializeGrovnicks()
         } break;
         case 8:
         {
-          Grovnick * binocularPtr = new Binoculars(y, x, cst, 7, name);
+          Grovnick * binocularPtr = new Binoculars(y, x, cst, 8, name);
           setGrovnick(binocularPtr, x, y);
 
         } break;
       }
     }
-    
-    
-    
+
+
+
 
   }
 
