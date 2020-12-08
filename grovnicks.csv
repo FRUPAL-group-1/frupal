@@ -108,13 +108,13 @@
 3,47,44,20,claw hammer,2
 3,50,55,70,enchanted war axe,4
 4,68,6,0,hope diamond,1000000
-5,0,0,0,clue scroll,go one to the left,true
-5,0,0,0,clue carving,blank,false
-5,0,0,0,clue etching,blank,true
-5,0,0,0,clue smoke signal,true
-5,0,0,0,clue post-it,true
-5,0,0,0,clue fortune cookie,false
-5,0,0,0,clue poster,false
+5,17,123,0,clue roll,you're on the wrong side of the map,true
+5,42,72,0,clue carving, exit this enclosure and go to the right,false
+5,68,16,0,clue etching,follow this wall and go down,true
+5,83,68,0,clue smoke signal,go up and to the right,false
+5,38,20,0,clue post-it,go down until you hit a wall and go right,true
+5,58,44,0,clue fortune cookie,go left and up along this wall,true
+5,12,56,0,clue poster,exit this enclosure and go to the right,false
 6,6,23,0,the chest of friendship,640
 6,8,29,0,dragon's hoard,1000
 6,10,24,0,pirate's treasure,200
