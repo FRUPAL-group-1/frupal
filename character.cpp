@@ -95,10 +95,10 @@ bool Character::hasBinoculars()
 bool Character::addToolToInventory(Tool *&item)
 {
   int i = freeSpotInToolBag();
-  bool isfull = isToolBagFull();
-  if(i >= 0 && i < MAX_TOOLS) //check for valid range
+  //bool isfull = isToolBagFull();
+  if(i >= -1 && i < MAX_TOOLS) //check for valid range
   {
-    if(isfull)
+    if(i == -1)
     {
       mvprintw(LINES-25, leftbuffer, " Your bag is full!");
       mvprintw(LINES-24, leftbuffer, " remove a tool!");
@@ -136,14 +136,12 @@ bool Character::addToolToInventory(Tool *&item)
           return false;
           break;
       }
-
     }
     else
     {
       toolbag[i] = item;
       return true;
     }
-
   }
   return false;
 }
@@ -202,11 +200,14 @@ int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
 
 void Character::printTools()
 {
+  mvprintw(LINES-30, leftbuffer, " The tools you have are: ");
   for(int i = 0; i < MAX_TOOLS; ++i)
   {
-    mvprintw(LINES-20, leftbuffer, " The tools you have are: ");
     if(toolbag[i])
-      mvprintw(i+LINES-19, leftbuffer, " %d) %s\n", i+1, toolbag[i]->name.data());
+    {
+      mvprintw( 30, leftbuffer, "Hello");
+      mvprintw( (LINES-29)-i, leftbuffer, " %d) %s", i+1, toolbag[i]->name.data());
+    }
   }
 }
 

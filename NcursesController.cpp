@@ -189,7 +189,7 @@ void NcursesController::displayFrame(char map[128][128], int herox, int heroy, i
 
   //vertical line to separate viewport from menu
   mvvline(0, viewport_width+1, '#', viewport_height);
-
+  
   //loop through map array and display info on screen
   for(int y = (heroy - (hero_yspot-1)), printy = 0; y < (heroy + hero_yspot + y_adder); y++) {
     if(y < 0 || y > 127) {

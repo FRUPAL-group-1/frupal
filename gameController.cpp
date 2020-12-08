@@ -83,8 +83,9 @@ bool GameController::update()
                 char ch;
                 //I DO THIS INSIDE THE FUNCTION
                 //Obstacle *currentObstacle = dynamic_cast<Obstacle *>(current);
-                hero.printTools();
                 mvprintw(LINES-10, leftbuffer, " What tool to use?");
+                //mvprintw( 30, leftbuffer, "Hello");
+                hero.printTools();
                 ch = getch();
                 switch(ch)
                 {
@@ -109,29 +110,27 @@ bool GameController::update()
 
             case 3:
               {
-                Tool * toolPtr = dynamic_cast<Tool *>(current);
-                hero.addToolToInventory(toolPtr);
-                currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+                Tool * tool = dynamic_cast<Tool *>(current);
+                //hero.addToolToInventory(toolPtr);
+                //currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
 
-                /*
-                if(current && current -> type == 3)
+                if(tool && tool -> type == 3)
                 {
 
                   //here the Tool class also calls the constructor for the Grovnick base class, and it should work, but doesnt!
                   //the Tool class makes a segfault on line 105, and then Grovnick says
                   //  tooltype and item_effectiveness does not exist in grovnick
                   Tool *toolptr = new Tool( current->y_axis,
-                      current->x_axis,
-                      current->cost,
-                      current->type,
-                      current->name,
-                      current->tool_type,           //in the Tool derived class
-                      current->item_effectiveness   //in the Tool derived class
+                      tool->x_axis,
+                      tool->cost,
+                      tool->type,
+                      tool->name,
+                      tool->tool_type,           //in the Tool derived class
+                      tool->item_effectiveness   //in the Tool derived class
                       );
                   hero.addToolToInventory(toolptr);
                   currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
                 }
-                */
                 break;
               }
 
