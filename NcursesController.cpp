@@ -251,6 +251,8 @@ bool NcursesController::displaygrovnick(int y, int x, int printy, int printx, Gr
   if(grovnicks[y][x] != NULL)
   {
     Grovnick * current = grovnicks[y][x];
+    if(current == NULL)
+      return false;
     switch(current->type){
       case 1: //food
         mvaddch(printy,printx,'F');
@@ -279,12 +281,18 @@ bool NcursesController::displaygrovnick(int y, int x, int printy, int printx, Gr
         return true;
         break;
       case 7: //ship
-	mvaddch(printy,printx,'S');
+	      mvaddch(printy,printx,'S');
         return true;
         break;
       case 8: //binoculars
         mvaddch(printy,printx,'B');
         return true;
+        break;
+      case 0:
+        return false;
+        break;
+      default:
+        return false;
         break;
     }
   } else {
@@ -314,7 +322,7 @@ void NcursesController::displayVictory()
 	erase();
 	mvprintw(LINES/2, COLS/2, "YOU ARE VICTORIOUS!");
 	refresh();
-	this_thread::sleep_for(chrono::milliseconds(10000));	
+	this_thread::sleep_for(chrono::milliseconds(10000));
 }
 
 void NcursesController::move_hero(char map[128][128], int discovered[128][128], Character &hero, int keypress, Grovnick * grovnicks[128][128])

@@ -71,7 +71,7 @@ void Character::gainBinoculars()
 
 void Character::gainBoat()
 {
-  boat = false;
+  boat = true;
 }
 
 
@@ -180,7 +180,7 @@ int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
   //now obstacle AND tools should be valid, time to check if they match up
   if(toolbag[toolNumber]->type_match(*obstacle))
   {
-    //now we know that the obstacle and tool match, 
+    //now we know that the obstacle and tool match,
     spendEnergy( (obstacle->cost)
                 /(toolbag[toolNumber]->item_effectiveness)
         );
