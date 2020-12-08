@@ -1,19 +1,19 @@
-1,0,0,1,kebab,10,false
-1,0,0,4,pizza,40,false
-1,0,0,1,apple,5,false
-1,0,0,4,salami,17,false
-1,0,0,1,apple,5,false
-1,0,0,10,magic juice,120,false
-1,0,0,50,Thanksgiving Turkey,50,false
-1,0,0,1000,ambrosia,1000,false
-1,0,0,100,exotic yet tasteless fruit,5,false
-1,0,0,2,jello cup,8,false
-1,0,0,5,a handful of nuts,5,false
-1,0,0,1,huckleberries on a bush,15,false
-1,0,0,20,leftover Chinese takeout,25,false
-1,0,0,15,gas station burrito,10,false
-1,0,0,10,cotton candy,10,false
-1,0,0,50,artisan salt aged beef,25,false
+1,79,97,1,kebab,10,false
+1,88,93,4,pizza,40,false
+1,87,110,1,apple,5,false
+1,9,4,4,salami,17,false
+1,10,4,1,apple,5,false
+1,10,5,10,magic juice,120,false
+1,11,8,50,Thanksgiving Turkey,50,false
+1,12,8,1000,ambrosia,1000,false
+1,2,53,100,exotic yet tasteless fruit,5,false
+1,3,54,2,jello cup,8,false
+1,7,54,5,a handful of nuts,5,false
+1,46,8,1,huckleberries on a bush,15,false
+1,49,10,20,leftover Chinese takeout,25,false
+1,54,7,15,gas station burrito,10,false
+1,44,5,10,cotton candy,10,false
+1,42,2,50,artisan salt aged beef,25,false
 1,40,8,15,eggplant parmesan,20,false
 1,59,3,29,spaghetti,15,false
 1,13,20,5,coconut cream pie,11,false
@@ -31,7 +31,7 @@
 1,123,18,9,ham sandwich,84,false
 1,123,21,1,avocado toast,68,false
 1,126,48,6,baked salmon,78,false
-1,100,42,61,barbacoa taco,19,false
+1,100,44,61,barbacoa taco,19,false
 1,112,49,22,sliced mango,18,false
 1,72,41,44,boiled king crab,16,false
 1,101,58,1,buttery lobster,16,false
@@ -44,8 +44,8 @@
 1,42,95,10,stack of pancakes,28,false
 1,34,111,90,Thanksgiving Turkey,382,false
 1,14,123,38,canned clams,27,false
-1,51,125,17,roasted pumpkin,22,false
-1,76,72,28,flan,22,false
+1,52,126,17,roasted pumpkin,22,false
+1,76,73,28,flan,22,false
 1,68,83,37,chicken and waffles,29,false
 1,106,88,27,chocolate,49,false
 1,115,78,21,tuna,85,false
@@ -53,61 +53,61 @@
 1,114,99,5,honey,98,false
 1,97,112,9,olives,99,false
 1,98,125,43,bagel,20,false
-2,0,0,5,boulder,2
-2,0,0,10,huge boulder,2
-2,0,0,10,giant old oak,1
-2,0,0,5,fallen log,1
-2,0,0,20,rockslide,2
-2,0,0,100,literally the biggest rock ever seen,2
-2,0,0,100,a Californian Redwood,1
-2,0,0,40,lodestone,2
-2,0,0,30,granite boulder,2
-2,0,0,10,limestone boulder,2
-2,0,0,5,pine sapling,1
-2,0,0,30,douglas fir,1
-2,0,0,60,japanese maple,1
-2,0,0,40,east coast maple,1
-2,0,0,10,rotting log,1
-2,0,0,5,man in tree costume,1
-2,0,0,60,dwayne johnson,2
-2,0,0,150,mt rushmore,2
-2,0,0,30,plymouth rock,2
-2,0,0,50,mysterious obelisk,2
-2,0,0,60,elder tree,1
-2,0,0,85,groot,1
-2,0,0,20,birch tree,1
-2,0,0,50,treebeard,1
-2,0,0,80,whomping willow,1
-2,0,0,30,the giving tree,1
-2,0,0,10,pile of branches,1
-2,0,0,15,mossy boulder,2
-2,0,0,10,obsidian chunk,2
-2,0,0,35,hunk of rock,2
-2,0,0,40,big boulder,2
-2,0,0,20,rock you stubbed your toe on,2
-2,0,0,15,diseased pine tree,1
-2,0,0,5,inconvenient stone,2
-2,0,0,14,stubborn weed,1
-2,0,0,50,ancient fossil,2
-2,0,0,40,remnants of a wooden barracade,1
-2,0,0,10,vine covered rocks,2
-2,0,0,15,juniper tree,1
-2,0,0,20,dead tree,1
-2,0,0,15,holiday tree,1
-3,0,0,100,jackhammer,2,5
-3,0,0,10,mallet,2,2
-3,0,0,100,chainsaw,1,5
-3,0,0,10,rusty handsaw,1,2
-3,0,0,50,quality handsaw,1,3
-3,0,0,50,pickaxe,2,3
-3,0,0,50,camping axe,1,3
-3,0,0,40,small hatchet,2
-3,0,0,150,mjolnir,6
-3,0,0,20,ballpeen hammer,2
-3,0,0,35,sledgehammer,3
-3,0,0,20,claw hammer,2
-3,0,0,70,enchanted war axe,4
-4,0,0,0,hope diamond,1000000
+2,83,71,5,boulder,2
+2,77,71,10,huge boulder,2
+2,45,70,10,giant old oak,1
+2,48,98,5,fallen log,1
+2,47,106,20,rockslide,2
+2,10,51,100,literally the biggest rock ever seen,2
+2,22,20,100,a Californian Redwood,1
+2,23,21,40,lodestone,2
+2,23,22,30,granite boulder,2
+2,25,25,10,limestone boulder,2
+2,84,48,5,pine sapling,1
+2,7,65,30,douglas fir,1
+2,6,65,60,japanese maple,1
+2,12,74,40,east coast maple,1
+2,13,74,10,rotting log,1
+2,12,18,5,man in tree costume,1
+2,67,61,60,dwayne johnson,2
+2,67,62,150,mt rushmore,2
+2,67,63,30,plymouth rock,2
+2,67,64,50,mysterious obelisk,2
+2,45,42,60,elder tree,1
+2,47,41,85,groot,1
+2,49,39,20,birch tree,1
+2,50,38,50,treebeard,1
+2,48,45,80,whomping willow,1
+2,45,45,30,the giving tree,1
+2,66,36,10,pile of branches,1
+2,60,30,15,mossy boulder,2
+2,68,34,10,obsidian chunk,2
+2,70,35,35,hunk of rock,2
+2,73,41,40,big boulder,2
+2,75,40,20,rock you stubbed your toe on,2
+2,71,30,15,diseased pine tree,1
+2,74,40,5,inconvenient stone,2
+2,77,51,14,stubborn weed,1
+2,97,92,50,ancient fossil,2
+2,90,89,40,remnants of a wooden barracade,1
+2,94,78,10,vine covered rocks,2
+2,95,70,15,juniper tree,1
+2,100,95,20,dead tree,1
+2,95,100,15,holiday tree,1
+3,5,41,100,jackhammer,2,5
+3,8,30,10,mallet,2,2
+3,10,69,100,chainsaw,1,5
+3,25,85,10,rusty handsaw,1,2
+3,31,71,50,quality handsaw,1,3
+3,34,74,50,pickaxe,2,3
+3,35,95,50,camping axe,1,3
+3,22,10,40,small hatchet,2
+3,29,14,150,mjolnir,6
+3,46,4,20,ballpeen hammer,2
+3,49,5,35,sledgehammer,3
+3,47,44,20,claw hammer,2
+3,50,55,70,enchanted war axe,4
+4,68,6,0,hope diamond,1000000
 5,0,0,0,clue scroll,go one to the left,true
 5,0,0,0,clue carving,blank,false
 5,0,0,0,clue etching,blank,true
@@ -115,26 +115,26 @@
 5,0,0,0,clue post-it,true
 5,0,0,0,clue fortune cookie,false
 5,0,0,0,clue poster,false
-6,0,0,0,the chest of friendship,640
-6,0,0,0,dragon's hoard,1000
-6,0,0,0,pirate's treasure,200
-6,0,0,0,goblin hoard treasure,17
-6,0,0,0,the Ice King's Music Box,30
-6,0,0,0,Elron's Pocketbook,50
-6,0,0,0,treasure pod,150
-6,0,0,0,huge treasure chest,1000
-6,0,0,0,lost wallet,7
-6,0,0,0,stolen purse,100
-6,0,0,0,piggy bank,25
-6,0,0,0,envelope of sketchy cash,500
-6,0,0,0,gift from grandma,50
-6,0,0,0,jewelry box,100
-6,0,0,0,chest of pirate doubloons,400
-6,0,0,0,DB Cooper's stash,800
-6,0,0,0,foreign currency,50
-6,0,0,0,somebody's coin collection,450
-6,0,0,0,ancient coins,60
-6,0,0,0,astronaut money,75
-6,0,0,0,tuition grant,1000
-7,4,4,600,sailboat
+6,6,23,0,the chest of friendship,640
+6,8,29,0,dragon's hoard,1000
+6,10,24,0,pirate's treasure,200
+6,8,58,0,goblin hoard treasure,17
+6,10,66,0,the Ice King's Music Box,30
+6,3,59,0,Elron's Pocketbook,50
+6,10,50,0,treasure pod,150
+6,10,81,0,huge treasure chest,1000
+6,13,81,0,lost wallet,7
+6,15,85,0,stolen purse,100
+6,20,83,0,piggy bank,25
+6,20,80,0,envelope of sketchy cash,500
+6,22,81,0,gift from grandma,50
+6,23,49,0,jewelry box,100
+6,25,55,0,chest of pirate doubloons,400
+6,23,58,0,DB Cooper's stash,800
+6,26,50,0,foreign currency,50
+6,34,53,0,somebody's coin collection,450
+6,35,20,0,ancient coins,60
+6,34,25,0,astronaut money,75
+6,30,21,0,tuition grant,1000
+7,5,7,600,sailboat
 8,1,21,300,binoculars,1,100
