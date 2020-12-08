@@ -67,12 +67,15 @@ bool GameController::update()
           switch(current->type){
             case 1: //food
               {
-                Food * food = dynamic_cast<Food *>(current);
-                hero.addEnergy(food->restore);
-                hero.spendWhiffles(food->cost);
-                currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
-                ncursescontroller.displayMove(hero.whiffles, hero.energy);
-                move((LINES/2)-1, ((COLS-30)/2)-1);
+                if(hero.whiffles >= current->cost)
+                {
+                  Food * food = dynamic_cast<Food *>(current);
+                  hero.addEnergy(food->restore);
+                  hero.spendWhiffles(food->cost);
+                  currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+                  ncursescontroller.displayMove(hero.whiffles, hero.energy);
+                  move((LINES/2)-1, ((COLS-30)/2)-1);
+                }
                 break;
               }
             case 2:
@@ -126,14 +129,14 @@ bool GameController::update()
                 }
               }
               break;
-              
+
 				    case 4: //diamond
 				    {
 					    Royal_Diamond * current = dynamic_cast<Royal_Diamond *>(current);
 					    hero.addWhiffles(1000000000); // add to bank account
 					    break;
 				    }
-              
+
             case 6: //treasure chest
               {
                 Treasure * chest = dynamic_cast<Treasure *>(current);
@@ -146,21 +149,28 @@ bool GameController::update()
 
             case 7: //ship
               {
-                hero.spendWhiffles(current->cost);
-                currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
-                ncursescontroller.displayMove(hero.whiffles, hero.energy);
-                hero.gainBoat();
-                move((LINES/2)-1, ((COLS-30)/2)-1);
+                if(hero.whiffles >= current->cost)
+                {
+                  hero.spendWhiffles(current->cost);
+                  currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+                  ncursescontroller.displayMove(hero.whiffles, hero.energy);
+                  hero.gainBoat();
+                  move((LINES/2)-1, ((COLS-30)/2)-1);
+                }
                 break;
               }
 
             case 8: //binoculars
               {
-                hero.spendWhiffles(current->cost);
-                currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
-                ncursescontroller.displayMove(hero.whiffles, hero.energy);
-                hero.gainBinoculars();
-                move((LINES/2)-1, ((COLS-30)/2)-1);
+                if(hero.whiffles >= current->cost)
+                {
+                  hero.spendWhiffles(current->cost);
+                  currentMap.grovnicks[hero.yAxis][hero.xAxis] = NULL;
+                  ncursescontroller.displayMove(hero.whiffles, hero.energy);
+                  hero.gainBinoculars();
+                  move((LINES/2)-1, ((COLS-30)/2)-1);
+                }
+                break;
               }
 
             default:
@@ -196,14 +206,14 @@ bool GameController::update()
     {
       return 0;
     }
-    
+
     if(hero.whiffles >= 1000000000) // end game with diamond
 		{
 
 			ncursescontroller.displayVictory();
 			return 0;
 		}
-    
+
     Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
     if(temp)
     {
