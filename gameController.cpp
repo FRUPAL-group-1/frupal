@@ -30,30 +30,42 @@ bool GameController::update()
     {
       //case 1
       case 'a':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
+        if(!currentMap.grovnicks[hero.yAxis][hero.xAxis] || currentMap.grovnicks[hero.yAxis][hero.xAxis]->type != 2)
+        {
+          ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 1, currentMap.grovnicks);
+          cursorx = hero.xAxis;
+          cursory = hero.yAxis;
+        }
         break;
 
         //case 2
       case 's':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
+        if(!currentMap.grovnicks[hero.yAxis][hero.xAxis] || currentMap.grovnicks[hero.yAxis][hero.xAxis]->type != 2)
+        {
+          ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 2, currentMap.grovnicks);
+          cursorx = hero.xAxis;
+          cursory = hero.yAxis;
+        }
         break;
 
         //case 3
       case 'w':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
+        if(!currentMap.grovnicks[hero.yAxis][hero.xAxis] || currentMap.grovnicks[hero.yAxis][hero.xAxis]->type != 2)
+        {
+          ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 3, currentMap.grovnicks);
+          cursorx = hero.xAxis;
+          cursory = hero.yAxis;
+        }
         break;
 
         //case 4
       case 'd':
-        ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
-        cursorx = hero.xAxis;
-        cursory = hero.yAxis;
+        if(!currentMap.grovnicks[hero.yAxis][hero.xAxis] || currentMap.grovnicks[hero.yAxis][hero.xAxis]->type != 2)
+        {
+          ncursescontroller.move_hero(currentMap.map, currentMap.discovered, hero, 4, currentMap.grovnicks);
+          cursorx = hero.xAxis;
+          cursory = hero.yAxis;
+        }
         break;
 
         //quit
@@ -91,8 +103,8 @@ bool GameController::update()
                 ch = getch();
                 switch(ch)
                 {
-		  case 'x':
-		    hero.clearObstacle(currentMap.grovnicks, 6);
+                  case 'x':
+                    hero.clearObstacle(currentMap.grovnicks, 6);
                   case '1':
                     hero.clearObstacle(currentMap.grovnicks, 1);
                     break;
@@ -138,12 +150,12 @@ bool GameController::update()
                 break;
               }
 
-      	    case 4: //diamond
-        	    {
-        		    //Royal_Diamond * current = dynamic_cast<Royal_Diamond *>(current);
-        		    hero.addWhiffles(1000000000); // add to bank account
-        		    break;
-        	    }
+            case 4: //diamond
+              {
+                //Royal_Diamond * current = dynamic_cast<Royal_Diamond *>(current);
+                hero.addWhiffles(1000000000); // add to bank account
+                break;
+              }
 
             case 6: //treasure chest
               {
@@ -218,8 +230,8 @@ bool GameController::update()
     if(hero.whiffles >= 1000000000) // end game with diamond
     {
 
-		ncursescontroller.displayVictory();
-		return 0;
+      ncursescontroller.displayVictory();
+      return 0;
     }
 
     getyx(stdscr, prevy, prevx);
@@ -227,7 +239,6 @@ bool GameController::update()
     Grovnick * temp = currentMap.grovnicks[cursory][cursorx];
     if(temp)
     {
-      //need to set up a loop for display discovered grovnicks? How to display only discovered grovnicks? use discovered[128][128] instead of grovnicks[][]?
       Obstacle * obst = dynamic_cast<Obstacle *>(temp);
       if(obst)
       {

@@ -12,7 +12,7 @@ Character::Character()
 {
   yAxis = 1;
   xAxis = 1;
-  energy = 1002;
+  energy = 11002;
   whiffles = 1000;
   binoculars = false;
   boat = false;
@@ -218,6 +218,8 @@ int Character::clearObstacle(Grovnick *grovnicks[128][128], int toolNumber)
 void Character::printTools()
 {
   int leftbuffer = COLS - 28;
+  mvprintw(LINES-32, leftbuffer, " If no tools, press 'X'");
+  mvprintw(LINES-31, leftbuffer, " to remove obstacle");
   mvprintw(LINES-30, leftbuffer, " The tools you have are: ");
   for(int i = 0; i < MAX_TOOLS; ++i)
   {
