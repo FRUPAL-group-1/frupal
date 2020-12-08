@@ -10,8 +10,8 @@
 1,3,54,2,jello cup,8,false
 1,7,54,5,a handful of nuts,5,false
 1,46,8,1,huckleberries on a bush,15,false
-1,50,10,20,leftover Chinese takeout,25,false
-1,55,8,15,gas station burrito,10,false
+1,49,10,20,leftover Chinese takeout,25,false
+1,54,8,15,gas station burrito,10,false
 1,44,5,10,cotton candy,10,false
 1,42,2,50,artisan salt aged beef,25,false
 1,40,8,15,eggplant parmesan,20,false
@@ -44,7 +44,7 @@
 1,42,95,10,stack of pancakes,28,false
 1,34,111,90,Thanksgiving Turkey,382,false
 1,14,123,38,canned clams,27,false
-1,51,125,17,roasted pumpkin,22,false
+1,52,126,17,roasted pumpkin,22,false
 1,76,73,28,flan,22,false
 1,68,83,37,chicken and waffles,29,false
 1,106,88,27,chocolate,49,false
@@ -99,7 +99,7 @@
 3,10,69,100,chainsaw,1,5
 3,25,85,10,rusty handsaw,1,2
 3,31,71,50,quality handsaw,1,3
-3,35,74,50,pickaxe,2,3
+3,34,74,50,pickaxe,2,3
 3,35,95,50,camping axe,1,3
 3,22,10,40,small hatchet,2
 3,29,15,150,mjolnir,6
@@ -119,14 +119,14 @@
 6,8,29,0,dragon's hoard,1000
 6,10,24,0,pirate's treasure,200
 6,8,58,0,goblin hoard treasure,17
-6,10,65,0,the Ice King's Music Box,30
+6,10,66,0,the Ice King's Music Box,30
 6,3,59,0,Elron's Pocketbook,50
 6,10,50,0,treasure pod,150
 6,10,81,0,huge treasure chest,1000
 6,13,81,0,lost wallet,7
 6,15,85,0,stolen purse,100
 6,20,83,0,piggy bank,25
-6,21,80,0,envelope of sketchy cash,500
+6,20,80,0,envelope of sketchy cash,500
 6,22,81,0,gift from grandma,50
 6,23,49,0,jewelry box,100
 6,25,55,0,chest of pirate doubloons,400
@@ -136,5 +136,5 @@
 6,35,20,0,ancient coins,60
 6,34,25,0,astronaut money,75
 6,30,21,0,tuition grant,1000
-7,6,7,600,sailboat
-8,21,1,300,binoculars,1,100
+7,5,7,600,sailboat
+8,1,21,300,binoculars,1,100
