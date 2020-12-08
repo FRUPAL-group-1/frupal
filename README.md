@@ -3,7 +3,7 @@
 ### Members
 - Carl Gunnar Rosenberg
 - Maksim Semchuk
-- Jonatham Rivera
+- Jonathan Rivera
 - Tareq Jallad
 - Natasha Needham
       
@@ -58,4 +58,4 @@ All features listed in the project requirments were implemented.
 
 
 ### Group Video
-* Link: 
+* Link: https://media.pdx.edu/media/t/1_rgxwhel6
